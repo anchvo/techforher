@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Confirm Delete</h1>
+
+<p>Are you sure you want to delete the mentorship between 
+<strong>{{ mentorship.mentor }}</strong> and <strong>{{ mentorship.mentee }}</strong>?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, Delete</button>
+</form>
+
+<a href="{% url 'mentorship-list' %}">Cancel</a>
+
+{% endblock %}
