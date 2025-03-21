@@ -10,8 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv()
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
@@ -52,6 +55,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'homeapp',
+    'accounts',
 ]
 
 SITE_ID = 1
