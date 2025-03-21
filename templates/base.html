@@ -26,7 +26,15 @@
 <nav class="w-full bg-teal-700 shadow-md p-4 flex items-end relative">
     <p class="text-3xl font-mono font-bold text-black bg-gray-200 px-4 py-2 rounded-t-lg">Mentor Matrix</p>
 
-    <div class="flex gap-2 absolute bottom-0 right-0 pr-4">
+    <!-- Hamburger Menu Button -->
+    <button id="menu-toggle" class="lg:hidden text-white text-3xl focus:outline-none ml-auto">
+        ☰
+    </button>
+
+
+
+    <div id="menu"
+        class="hidden lg:flex items-center gap-2 absolute top-full w-auto bg-teal-700 lg:static bottom-0 right-0 pr-4 bg-teal-700 lg:bg-transparent w-full lg:w-auto flex flex-col lg:flex-row ml-auto">
         <a href="{% url 'home' %}"
             class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">home</a>
         <a href="{% url 'dashboard' %}"
