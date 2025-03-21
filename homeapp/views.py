@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.views import generic
 from .models import ForumPost
 from .forms import ForumPostForm
+from django.contrib.auth import get_user_model
 # Create your views here.
 
 
@@ -15,12 +16,14 @@ def dashboard(request):
 def about(request):
     return render(request, 'homeapp/about.html')
 
+User = get_user_model()
+
 def forum(request):
     if request.method == 'POST':
         form = ForumPostForm(request.POST)
         if form.is_valid():
             forum_post = form.save(commit=False)
-            forum_post.user = request.user
+            forum_post.user = User.objects.get(pk=request.user.pk)
             forum_post.save()
             return redirect('forum')
     else:
