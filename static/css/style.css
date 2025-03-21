@@ -1,0 +1,28 @@
+/* css variables  */
+:root {
+    --background-color: #008080;
+    --text-color: #333;
+    --ui-color: #C0C0C0;
+}
+
+/* global styles */
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: var(--ui-color);
+    padding: 10px 0;
+}
+
+.container {
+    background-color: var(--ui-color);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
