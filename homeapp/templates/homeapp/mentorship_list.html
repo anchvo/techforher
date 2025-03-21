@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Mentorship List</h1>
+
+{% if mentorships %}
+<ul>
+    {% for mentorship in mentorships %}
+        <li>
+            <a href="{% url 'mentorship-detail' mentorship.pk %}">
+                Mentorship between {{ mentorship.mentor }} and {{ mentorship.mentee }}
+            </a>
+            (Status: {{ mentorship.status }})
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No mentorships found.</p>
+{% endif %}
+
+<a href="{% url 'mentorship-create' %}">Create a new mentorship</a>
+
+{% endblock %}
