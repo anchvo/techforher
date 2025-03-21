@@ -12,6 +12,10 @@
 
 <div>
     <h2>make a new post</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
 </div>
 
 <!-- forum.html content ends here -->
