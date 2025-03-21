@@ -6,19 +6,36 @@
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
-  <head>
+
+<head>
     <title>Mentor Matrix</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
 
     <!-- Header / Navigation -->
+    <nav class="w-full bg-teal-700 shadow-md p-4 flex items-end relative">
+        <p class="text-3xl font-mono font-bold text-black bg-gray-200 px-4 py-2 rounded-t-lg">Mentor Matrix</p>
 
+        <div class="flex gap-2 absolute bottom-0 right-0 pr-4">
+            <a href="#"
+                class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">dashboard</a>
+            <a href="#"
+                class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">community</a>
+            <a href="#"
+                class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">connections</a>
+            <a href="#"
+                class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">about
+                us</a>
+        </div>
+    </nav>
+  
     <!-- navbar just for jo -->
     <nav>
         <a href="{% url 'home' %}">home</a>
@@ -41,10 +58,10 @@
 
     <!--Scripts -->
     <!-- Custom JS -->
+
     <script src="{% static 'js/script.js' %}"></script>
 
 </body>
 
 
 </html>
-
