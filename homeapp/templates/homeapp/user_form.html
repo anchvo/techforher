@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{% if object %}Update{% else %}Create{% endif %} User</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+
+<a href="{% url 'user-list' %}">Back to Users</a>
+
+<!-- user_form.html content ends here -->
+{% endblock %}
