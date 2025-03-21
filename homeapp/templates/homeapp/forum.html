@@ -1,9 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <div class="container">
-    <p>This is the forum</p>
+    <h2>Forum Posts</h2>
+    <ul>
+        {% for post in posts %}
+            <li><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a> - {{ post.user }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div>
+    <h2>make a new post</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
 </div>
 
 <!-- forum.html content ends here -->

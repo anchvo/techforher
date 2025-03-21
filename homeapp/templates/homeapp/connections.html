@@ -3,7 +3,33 @@
 {% block content %}
 
 <div class="container">
-    <p>This is the connections page</p>
+    <h2>Mentorship Connections</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Mentor</th>
+            <th>Mentee</th>
+            <th>Status</th>
+            <th>Preferred Language</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for mentorship in mentorships %}
+        <tr>
+            <td>{{ mentorship.mentor }}</td>
+            <td>{{ mentorship.mentee }}</td>
+            <td>{{ mentorship.status }}</td>
+            <td>{{ mentorship.preferred_language }}</td>
+            <td>{{ mentorship.created_at }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No mentorship connections found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 </div>
 
 <!-- connect.html content ends here -->
