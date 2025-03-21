@@ -17,54 +17,66 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body>
+<body class="bg-gray-100 flex flex-col min-h-screen"></body>>
 
-    <header>
-        <h1 class="header">Mentor Matrix</h1>
-    </header>
-    <!-- Header / Navigation -->
-    <nav class="w-full bg-teal-700 shadow-md p-4 flex items-end relative">
-        <p class="text-3xl font-mono font-bold text-black bg-gray-200 px-4 py-2 rounded-t-lg">Mentor Matrix</p>
+<header>
+    <h1 class="header">Mentor Matrix</h1>
+</header>
+<!-- Header / Navigation -->
+<nav class="w-full bg-teal-700 shadow-md p-4 flex items-end relative">
+    <p class="text-3xl font-mono font-bold text-black bg-gray-200 px-4 py-2 rounded-t-lg">Mentor Matrix</p>
 
-        <div class="flex gap-2 absolute bottom-0 right-0 pr-4">
-            <a href="{% url 'home' %}"
+    <!-- Hamburger Menu Button -->
+    <button id="menu-toggle" class="lg:hidden text-white text-3xl focus:outline-none ml-auto">
+        ☰
+    </button>
+
+
+
+    <div id="menu"
+        class="hidden lg:flex items-center gap-2 absolute top-full w-auto bg-teal-700 lg:static bottom-0 right-0 pr-4 bg-teal-700 lg:bg-transparent w-full lg:w-auto flex flex-col lg:flex-row ml-auto">
+        <a href="{% url 'home' %}"
             class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">home</a>
-            <a href="{% url 'dashboard' %}"
-                class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">dashboard</a>
-            <a href="{% url 'forum' %}"
-                class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">community</a>
-            <a href="{% url 'connections' %}"
-                class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">connections</a>
-            <a href="{% url 'about' %}"
-                class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">about
-                us</a>
-        </div>
-    </nav>
+        <a href="{% url 'dashboard' %}"
+            class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">dashboard</a>
+        <a href="{% url 'forum' %}"
+            class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">community</a>
+        <a href="{% url 'connections' %}"
+            class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">connections</a>
+        <a href="{% url 'about' %}"
+            class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">about
+            us</a>
+    </div>
+</nav>
 
-    <!-- Main Content -->
-    <main>
-        {% block content %}
-        <!-- Content -->
-        {% endblock content %}
-    </main>
+<!-- Main Content -->
+<main>
+    {% block content %}
+    <!-- Content -->
+    {% endblock content %}
+</main>
 
-    <!-- Footer -->
+<!-- Footer -->
 
-    <footer class="w-full bg-teal-700 shadow-md p-4 flex items-center justify-between fixed bottom-0 left-0">
-        <p class="ml-4 text-3xl font-mono font-bold text-black bg-gray-200 px-4 py-2 rounded-b-lg">Mentor Matrix</p>
+<footer class="w-full bg-teal-700 shadow-md p-4 flex items-center justify-between fixed bottom-0 left-0">
+    <p class="ml-4 text-base sm:text-lg font-mono font-bold text-black bg-gray-200 px-4 py-2 rounded-b-lg">Mentor
+        Matrix</p>
+    <p class="ml-4 text-base sm:text-lg font-mono font-bold text-black bg-gray-200 px-4 py-2 rounded-b-lg">© Team
+        TechForHer </p>
 
-        <!-- Social Media Icons -->
-        <div class="flex gap-4 mr-4">
-            <a href="#" class="text-white hover:text-gray-300 text-lg font-mono">Facebook</a>
-            <a href="#" class="text-white hover:text-gray-300 text-lg font-mono">Instagram</a>
-            <a href="#" class="text-white hover:text-gray-300 text-lg font-mono">TikTok</a>
-        </div>
-    </footer>
+    <p class="ml-4 mr-4 text-base sm:text-lg font-mono bg-gray-200 px-4 py-2 rounded-b-lg">
+        <a href="#" class="text-black font-bold hover:text-teal-700 text-lg font-mono">Contact Us</a>
+    </p>
 
-    <!--Scripts -->
-    <!-- Custom JS -->
 
-    <script src="{% static 'js/script.js' %}"></script>
+</footer>
+
+<!--Scripts -->
+<script src="../static/js/script.js"></script>
+
+<!-- Custom JS -->
+
+<script src="{% static 'js/script.js' %}"></script>
 
 </body>
 
