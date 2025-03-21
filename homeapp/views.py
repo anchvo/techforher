@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.views import generic
-from .models import ForumPost
+from .models import ForumPost, Mentorship
 from .forms import ForumPostForm
 from django.contrib.auth import get_user_model
 # Create your views here.
@@ -32,7 +32,8 @@ def forum(request):
     return render(request, 'homeapp/forum.html', {'posts': posts, 'form': form})
 
 def connect(request):
-    return render(request, 'homeapp/connections.html')
+    mentorships = Mentorship.objects.all()  # Fetch all mentorships
+    return render(request, 'homeapp/connections.html', {'mentorships': mentorships})
 
 def post_detail(request, post_id):
     post = get_object_or_404(ForumPost, id=post_id)
