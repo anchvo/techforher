@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import User, Mentorship, ForumPost, Message, ContactRequest
+from .models import User, Mentorship, ForumPost, Message, ContactRequest, Reply
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
@@ -19,6 +19,11 @@ class ForumPostAdmin(admin.ModelAdmin):
     list_display = ('title', 'user', 'is_anonymous', 'is_approved', 'created_at')
     list_filter = ('is_approved', 'is_anonymous')
     search_fields = ('title', 'user__username', 'content')
+
+@admin.register(Reply)
+class ReplyAdmin(admin.ModelAdmin):
+    list_display = ('user', 'post', 'created_at', 'is_approved')
+    search_fields = ('user__username', 'post__title', 'content')
 
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):

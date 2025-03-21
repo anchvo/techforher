@@ -7,4 +7,5 @@ urlpatterns = [
         path('dashboard/', views.dashboard, name='dashboard'),
         path('forum/', views.forum, name='forum'),
         path('connections/', views.connect, name='connections'),
+        path('post/<int:post_id>/', views.post_detail, name='post_detail'),
 ]
