@@ -1,7 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, Group, Permission
+from django.contrib.auth.models import AbstractUser, Group, Permission, User
 
-class User(AbstractUser):
+class CustomUser(AbstractUser):
     ROLE_CHOICES = [
         ('mentor', 'Mentor'),
         ('mentee', 'Mentee'),
@@ -11,7 +11,6 @@ class User(AbstractUser):
         choices=ROLE_CHOICES,
         default='mentee'
     )
-    is_verified = models.BooleanField(default=False)
 
     # Add related_name to avoid clashes with auth.User
     groups = models.ManyToManyField(
@@ -53,8 +52,8 @@ class Mentorship(models.Model):
         ('C#', 'C#'),
         ('Other', 'Other'),
     ]
-    mentor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mentorships_as_mentor')
-    mentee = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mentorships_as_mentee')
+    mentor = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='mentorships_as_mentor')
+    mentee = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='mentorships_as_mentee')
     status = models.CharField(
         max_length=10,
         choices=STATUS_CHOICES,
@@ -72,7 +71,7 @@ class Mentorship(models.Model):
 
 class ForumPost(models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     content = models.TextField()
     is_anonymous = models.BooleanField(default=False)
@@ -84,7 +83,7 @@ class ForumPost(models.Model):
 
 class Reply(models.Model):
     post = models.ForeignKey(ForumPost, on_delete=models.CASCADE, related_name='replies')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     is_approved = models.BooleanField(default=False)
@@ -94,8 +93,8 @@ class Reply(models.Model):
 
 
 class Message(models.Model):
-    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_messages')
-    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_messages')
+    sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='sent_messages')
+    receiver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='received_messages')
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 

@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import User, Mentorship, ForumPost, Message, ContactRequest, Reply
+from .models import ContactRequest, CustomUser, ForumPost, Mentorship, Message, Reply
 
-@admin.register(User)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('username', 'email', 'role', 'is_verified', 'date_joined')
-    list_filter = ('role', 'is_verified')
+@admin.register(CustomUser)
+class CustomUserAdmin(admin.ModelAdmin):
+    list_display = ('username', 'email', 'role', 'date_joined')
+    list_filter = ('role',)
     search_fields = ('username', 'email')
 
 @admin.register(Mentorship)
