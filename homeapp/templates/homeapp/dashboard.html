@@ -1,10 +1,47 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <div class="container">
-    <p>This is the user profile</p>
-</div>
+    <!-- Greeting and Logout -->
+    <div class="header">
+        <p>Hi, {{ user.username }}!</p>
+        <a href="" class="btn btn-danger">Logout</a>
+    </div>
 
-<!-- profile.html content ends here -->
+    <!-- Profile Section -->
+    <div class="profile">
+        <h2>Your Profile</h2>
+        <img src="{{ profile.profile_picture.url }}" alt="Profile Picture" class="profile-img">
+        <p>Email: {{ user.email }}</p>
+        <p>Bio: {{ profile.bio }}</p>
+        <a href="#" class="btn btn-primary">Edit Profile</a>
+    </div>
+
+    <!-- Recent Posts Section -->
+    <div class="recent-posts">
+        <h3>Recent Posts</h3>
+        {% for post in posts %}
+            <div class="post">
+                <h4>{{ post.title }}</h4>
+                <p>{{ post.content|truncatewords:20 }}</p>
+            </div>
+        {% empty %}
+            <p>No recent posts.</p>
+        {% endfor %}
+        <a href="#">View All Posts</a>
+    </div>
+
+    <!-- Messages Section -->
+    <div class="messages">
+        <h3>Messages</h3>
+        {% for message in messages %}
+            <div class="message">
+                <p><strong>{{ message.sender.username }}:</strong> {{ message.content|truncatewords:10 }}</p>
+            </div>
+        {% empty %}
+            <p>No messages yet.</p>
+        {% endfor %}
+        <a href="#">See All Messages</a>
+    </div>
+</div>
 {% endblock %}
