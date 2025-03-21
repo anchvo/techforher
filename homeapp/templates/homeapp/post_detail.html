@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content }}</p>
+    <p>Posted by: {{ post.user }}</p>
+
+    <h3>Replies</h3>
+    <ul>
+        {% for reply in post.replies.all %}
+            <li>{{ reply.content }} - {{ reply.user }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
