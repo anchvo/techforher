@@ -106,3 +106,76 @@ nav {
 .btn-danger:hover {
     background-color: darkred;
 }
+
+/* Style the Sign Up form */
+.signup {
+    width: 400px; /* Adjust width as needed */
+    margin: 50px auto; /* Center the form */
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: sans-serif;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.signup h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.signup p {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.signup a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}
+
+.signup label {
+    display: block;
+    margin-top: 10px;
+    color: #333;
+}
+
+.signup input[type="text"],
+.signup input[type="email"],
+.signup input[type="password"] {
+    width: calc(100% - 18px); /* Adjust for padding and border */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.signup button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.signup button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Error messages */
+.errorlist {
+    color: red;
+    margin-top: 5px;
+    padding-left: 20px;
+}
