@@ -8,7 +8,7 @@ from django.contrib.auth import get_user_model
 
 from django.db.models import Q
 from django.contrib.admin.views.decorators import staff_member_required
-from .models import ForumPost, Mentorship
+from .models import ForumPost, Mentorship, CustomUser
 from .forms import ForumPostForm, MentorSearchForm, ContactMentorForm, MentorshipForm
 from django.contrib.auth import get_user_model
 
@@ -53,35 +53,40 @@ def connect(request):
     Handles mentor search, contact functionality, and displays mentorships.
     """
     search_results = None
-    contact_form = None
+    contact_form = ContactMentorForm()  # Initialize contact_form
+    search_form = MentorSearchForm()  # Initialize search_form
+    message_sent = False
 
     # Handle mentor search
     if request.method == 'POST' and 'search_mentor' in request.POST:
         search_form = MentorSearchForm(request.POST)
         if search_form.is_valid():
             preferred_language = search_form.cleaned_data['preferred_language']
-            search_results = Mentorship.objects.filter(
-                Q(preferred_language=preferred_language) & Q(mentor__isnull=False)
-            )
+            # Filter mentors based on role and preferred languages
+            search_results = CustomUser.objects.filter(
+                role='mentor',
+                preferred_languages__name=preferred_language
+            ).distinct()
+
     # Handle contact functionality
     elif request.method == 'POST' and 'contact_mentor' in request.POST:
         contact_form = ContactMentorForm(request.POST)
         if contact_form.is_valid():
-            # Handle sending the message (e.g., save to database or send email)
+            mentor_id = request.POST.get('mentor_id')
             message = contact_form.cleaned_data['message']
-            # Example: Save the message to the database (you'll need a Message model)
-            # Message.objects.create(sender=request.user, recipient=mentor, content=message)
-            return redirect('connect')
-    else:
-        search_form = MentorSearchForm()
-        contact_form = ContactMentorForm()
+            if mentor_id:
+                mentor = CustomUser.objects.get(id=mentor_id)
+                # Example: Save the message or send an email (customize as needed)
+                print(f"Message sent to mentor: {mentor.username}")
+                message_sent = True
 
     mentorships = Mentorship.objects.all()
     return render(request, 'homeapp/connections.html', {
         'mentorships': mentorships,
         'search_form': search_form,
         'search_results': search_results,
-        'contact_form': contact_form
+        'contact_form': contact_form,
+        'message_sent': message_sent
     })
 
 @staff_member_required

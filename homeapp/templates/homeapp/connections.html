@@ -5,26 +5,33 @@
 <div class="container">
     <h2>Mentorship Connections</h2>
 
+    <!-- Success Message -->
+    {% if message_sent %}
+        <div class="alert alert-success">
+            Your message has been sent successfully!
+        </div>
+    {% endif %}
+
     <!-- Mentor Search Functionality -->
     <h3>Search for a Mentor</h3>
     <form method="POST">
         {% csrf_token %}
         {{ search_form.as_p }}
-        <button type="submit" name="search_mentor">Search</button>
+        <button type="submit" name="search_mentor" class="btn btn-primary">Search</button>
     </form>
 
+    <!-- Display Search Results -->
     {% if search_results %}
         <h4>Search Results:</h4>
         <ul>
-            {% for mentorship in search_results %}
+            {% for mentor in search_results %}
                 <li>
-                    {{ mentorship.mentor }} - {{ mentorship.preferred_language }}
+                    {{ mentor.username }} - {{ mentor.role }}
                     <!-- Contact Mentor Button -->
                     <form method="POST" style="display: inline;">
                         {% csrf_token %}
-                        {{ contact_form.as_p }}
-                        <input type="hidden" name="mentor_id" value="{{ mentorship.mentor.id }}">
-                        <button type="submit" name="contact_mentor">Contact</button>
+                        <input type="hidden" name="mentor_id" value="{{ mentor.id }}">
+                        <button type="submit" name="contact_mentor" class="btn btn-secondary">Contact</button>
                     </form>
                 </li>
             {% empty %}
@@ -35,7 +42,7 @@
 
     <!-- Display Existing Mentorships -->
     <h3>Existing Mentorships</h3>
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Mentor</th>
