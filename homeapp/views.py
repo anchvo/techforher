@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.views import generic
+
+from .models import ForumPost, Mentorship, Profile, CustomUser  # Import CustomUser
+from .forms import ForumPostForm
+from django.contrib.auth import get_user_model
+
 from django.db.models import Q
 from django.contrib.admin.views.decorators import staff_member_required
 from .models import ForumPost, Mentorship
@@ -9,11 +14,23 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 def index(request):
     return render(request, 'homeapp/index.html')
 
 def dashboard(request):
-    return render(request, 'homeapp/dashboard.html')
+    if request.user.is_authenticated and isinstance(request.user, CustomUser): #added CustomUser check
+        try:
+            profile = Profile.objects.get(user=request.user)
+        except Profile.DoesNotExist:
+            profile = None  # Handle the case where no profile exists.
+
+        posts = ForumPost.objects.all()[:5]  # Example: Get recent posts
+        messages = []  # Add your messages model here if you have one.
+        context = {'profile': profile, 'user': request.user, 'posts': posts, 'messages': messages}
+    else:
+        context = {'user': request.user}
+    return render(request, 'homeapp/dashboard.html', context)
 
 def about(request):
     return render(request, 'homeapp/about.html')
