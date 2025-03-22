@@ -1,15 +1,30 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, Group, Permission, User
+from django.contrib.auth.models import AbstractUser, Group, Permission
 
 class CustomUser(AbstractUser):
     ROLE_CHOICES = [
         ('mentor', 'Mentor'),
         ('mentee', 'Mentee'),
     ]
+    LANGUAGE_CHOICES = [
+        ('Python', 'Python'),
+        ('JavaScript', 'JavaScript'),
+        ('Java', 'Java'),
+        ('CSS', 'CSS'),
+        ('HTML', 'HTML'),
+        ('PHP', 'PHP'),
+        ('C#', 'C#'),
+        ('Other', 'Other'),
+    ]
     role = models.CharField(
         max_length=10,
         choices=ROLE_CHOICES,
         default='mentee'
+    )
+    preferred_languages = models.ManyToManyField(
+        'Language',
+        blank=True,
+        help_text="Select the languages the user is proficient in."
     )
 
     # Add related_name to avoid clashes with auth.User
@@ -36,6 +51,13 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.username
 
+
+class Language(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name
+    
 class Mentorship(models.Model):
     STATUS_CHOICES = [
         ('pending', 'Pending'),
