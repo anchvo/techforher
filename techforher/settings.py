@@ -98,6 +98,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'techforher.wsgi.application'
 
+# Redirect to this URL if a user is not authenticated
+LOGIN_URL = '/account/login/'
+LOGIN_REDIRECT_URL = '/dashboard/'  # Redirect users here after login
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

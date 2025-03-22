@@ -33,6 +33,10 @@ class CustomSignupForm(SignupForm):
 
 
 class ForumPostForm(forms.ModelForm):
+    """
+    Form for creating and editing forum posts.
+    The user field is assigned automatically in the view.
+    """
     class Meta:
         model = ForumPost
         fields = ['title', 'content', 'is_anonymous']
@@ -52,7 +56,7 @@ class ContactMentorForm(forms.Form):
     Form to send a message to a mentor.
     """
     message = forms.CharField(
-        widget=forms.Textarea(attrs={'rows': 4}),
+        widget=forms.Textarea(attrs={'rows': 4, 'placeholder': 'Write your message...'}),
         label="Message",
         required=True
     )
