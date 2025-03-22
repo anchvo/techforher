@@ -41,15 +41,24 @@ body {
 }
 
 nav {
-    background-color: var(--ui-color);
+    background-color: var(--background-color);
     padding: 10px 0;
 }
 
 .container {
-    background-color: var(--ui-color);
-    max-width: 1200px;
+    font-family: monospace;
+    font-size: 1.5em;
     margin: 0 auto;
+    background-color: var(--ui-color);
+    margin-left: 25px;
     padding: 0 20px;
+}
+
+.rainy {
+    font-family: rainyhearts, sans-serif;
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
 }
 
 .profile,
