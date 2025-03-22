@@ -5,6 +5,11 @@
 <div class="container">
     <h2>Contact Us</h2>
 </div>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
 
 <!-- index.html content ends here -->
 {% endblock %}

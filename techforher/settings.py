@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'homeapp',
+    'contactapp',
 ]
 
 SITE_ID = 1
@@ -151,3 +152,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email settings to use Gmail's SMTP server / Enable contact form submit to email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Django's built-in email backend
+EMAIL_HOST = 'smtp.gmail.com'  # Gmail’s SMTP server
+EMAIL_PORT = 587  # Port used for TLS
+EMAIL_USE_TLS = True  # Enable TLS (Transport Layer Security) for security
+EMAIL_HOST_USER = 'ebovjhlm@students.codeinstitute.net'  # Your Gmail address
+EMAIL_HOST_PASSWORD = 'elvb uwhb gwuj utjt'  # Your Gmail password (use App Password if 2FA is enabled)
