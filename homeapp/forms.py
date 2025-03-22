@@ -3,8 +3,11 @@ from .models import ForumPost, Mentorship, CustomUser, Language
 from django import forms
 from allauth.account.forms import SignupForm
 
-#sign up form
+
 class CustomSignupForm(SignupForm):
+    '''
+    Custom signup form to include role and preferred languages.
+    '''
     role = forms.ChoiceField(
     choices=CustomUser.ROLE_CHOICES, 
     required=True, 
