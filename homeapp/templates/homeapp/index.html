@@ -1,10 +1,42 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
 
 {% block content %}
-
+<!-- index.html content starts here -->
 <div class="container">
-    <p>This is the dash</p>
+    <div>
+        <h1>Welcome to Mentor Matrix</h1> <img src="{% static 'icons/codinghands.png' %}" alt="hands coding">
+    </div>
+
+    
+    <p>This is a space to find others with experience and to share your own knowledge.</p>
+    <p>Build your profile: <a href="{% url 'dashboard' %}"><img src="{% static 'icons/profile.png' %}" alt="a computer"></a> </p>
+    <p>
+        Connect with others: <a href="{% url 'connections' %}"><img src="{% static 'icons/connections.png' %}" alt="connections icon"></a>
+    </p>
+    <p>Got questions? </p>
+    <p>We got you!</p>
+    <p>Join the community: <a href="{% url 'forum' %}"><img src="{% static 'icons/community.png' %}" alt="community icon"></a></p>
+    <p>Learn more about us: <a href="{% url 'about' %}"><img src="{% static 'icons/about.png' %}" alt="about icon"></a></p>
+    {% if user.is_authenticated %}
+    <h1>Welcome, <span class="rainy"> {{ user.username }}!</span></h1>
+    <p>Here is some information for logged-in users.</p>
+    <p>You have <div>0</div> connections currently.</p>
+    <!-- Add more content for logged-in users here -->
+    <p><a href="#">Log out</a></p><img src="{% static 'icons/logout.png' %}" alt="logout icon">
+
+
+{% else %}
+    <h1>Welcome to Mentor Matrix</h1>
+    <p>This is a space to find others with experience and to share your own knowledge.</p>
+    <p>Please <a href="{% url 'login' %}">log in</a> to access more features.</p>
+{% endif %}
 </div>
+
+
+
 
 <!-- index.html content ends here -->
 {% endblock %}
