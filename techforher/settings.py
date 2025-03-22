@@ -53,6 +53,12 @@ INSTALLED_APPS = [
     'homeapp',
 ]
 
+#Sign up form
+
+ACCOUNT_FORMS = {
+    'signup': 'homeapp.forms.CustomSignupForm',
+}
+
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
