@@ -1,10 +1,69 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <div class="container">
-    <p>This is the user profile</p>
-</div>
+    <div class="header">
+        {% if user.is_authenticated %}
+            <p>Welcome, {{ user.username }}!</p>
+            <a href="{% url 'account_logout' %}" class="btn btn-danger">Logout</a>
+        {% else %}
+            <p>Welcome to our platform! Please sign up or log in.</p>
+            <div class="auth-buttons">
+                <a href="{% url 'account_login' %}" class="btn btn-primary">Login</a>
+                <a href="{% url 'account_signup' %}" class="btn btn-success">Sign Up</a>
+            </div>
+        {% endif %}
+    </div>
 
-<!-- profile.html content ends here -->
+    {% if user.is_authenticated %}
+        <div class="profile">
+            <h2>Your Profile</h2>
+            {% if profile.profile_picture %}
+                <img src="{{ profile.profile_picture.url }}" alt="Profile Picture" class="profile-img">
+            {% else %}
+                <p>No profile picture available.</p>
+            {% endif %}
+            <p>Email: {{ user.email }}</p>
+            {% if profile.bio %}
+                <p>Bio: {{ profile.bio }}</p>
+            {% else %}
+                <p>No bio available.</p>
+            {% endif %}
+            <a href="#" class="btn btn-primary">Edit Profile</a>
+        </div>
+
+        <div class="recent-posts">
+            <h3>Recent Forum Posts</h3>
+            {% if posts %}
+                {% for post in posts %}
+                    <div class="post">
+                        <h4>{{ post.title }}</h4>
+                        <p>{{ post.content|truncatewords:20 }}</p>
+                    </div>
+                {% endfor %}
+                <a href="{% url 'forum' %}">View All Forum Posts</a>
+            {% else %}
+                <p>No recent forum posts.</p>
+            {% endif %}
+        </div>
+
+        <div class="messages">
+            <h3>Messages</h3>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message">
+                        <p><strong>{{ message.sender.username }}:</strong> {{ message.content|truncatewords:10 }}</p>
+                    </div>
+                {% endfor %}
+                <a href="#">See All Messages</a>
+            {% else %}
+                <p>No messages yet.</p>
+            {% endif %}
+        </div>
+    {% else %}
+        <div class="guest-message">
+            <p>Explore our community by logging in or creating an account.</p>
+        </div>
+    {% endif %}
+</div>
 {% endblock %}
