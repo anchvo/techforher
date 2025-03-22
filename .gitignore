@@ -12,5 +12,5 @@ __pycache__/
 node_modules/
 core.Microsoft*
 core.mongo*
-
+core.python*myenv/
 venv/
