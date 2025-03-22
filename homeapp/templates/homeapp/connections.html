@@ -4,33 +4,61 @@
 
 <div class="container">
     <h2>Mentorship Connections</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Mentor</th>
-            <th>Mentee</th>
-            <th>Status</th>
-            <th>Preferred Language</th>
-            <th>Created At</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for mentorship in mentorships %}
-        <tr>
-            <td>{{ mentorship.mentor }}</td>
-            <td>{{ mentorship.mentee }}</td>
-            <td>{{ mentorship.status }}</td>
-            <td>{{ mentorship.preferred_language }}</td>
-            <td>{{ mentorship.created_at }}</td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="5">No mentorship connections found.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+
+    <!-- Mentor Search Functionality -->
+    <h3>Search for a Mentor</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ search_form.as_p }}
+        <button type="submit" name="search_mentor">Search</button>
+    </form>
+
+    {% if search_results %}
+        <h4>Search Results:</h4>
+        <ul>
+            {% for mentorship in search_results %}
+                <li>
+                    {{ mentorship.mentor }} - {{ mentorship.preferred_language }}
+                    <!-- Contact Mentor Button -->
+                    <form method="POST" style="display: inline;">
+                        {% csrf_token %}
+                        {{ contact_form.as_p }}
+                        <input type="hidden" name="mentor_id" value="{{ mentorship.mentor.id }}">
+                        <button type="submit" name="contact_mentor">Contact</button>
+                    </form>
+                </li>
+            {% empty %}
+                <li>No mentors found for the selected language.</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Display Existing Mentorships -->
+    <h3>Existing Mentorships</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mentor</th>
+                <th>Mentee</th>
+                <th>Status</th>
+                <th>Preferred Language</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mentorship in mentorships %}
+                <tr>
+                    <td>{{ mentorship.mentor }}</td>
+                    <td>{{ mentorship.mentee }}</td>
+                    <td>{{ mentorship.status }}</td>
+                    <td>{{ mentorship.preferred_language }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">No mentorship connections found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 
-<!-- connect.html content ends here -->
 {% endblock %}
