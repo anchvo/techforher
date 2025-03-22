@@ -5,9 +5,12 @@ from allauth.account.forms import SignupForm
 
 #sign up form
 class CustomSignupForm(SignupForm):
-    role = forms.ChoiceField(choices=CustomUser.ROLE_CHOICES, required=True, label='Role')
+    role = forms.ChoiceField(
+    choices=CustomUser.ROLE_CHOICES, 
+    required=True, 
+    label='Role')
     preferred_languages = forms.ModelMultipleChoiceField(
-        queryset=Language.objects.all(),  # Queryset for the Language model
+        queryset=Language.objects.all(), 
         required=False,
         widget=forms.CheckboxSelectMultiple,
         label='Preferred Languages'

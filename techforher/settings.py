@@ -55,7 +55,6 @@ INSTALLED_APPS = [
 
 #Sign up form
 
-
 ACCOUNT_FORMS = {
     'signup': 'homeapp.forms.CustomSignupForm',
 }
