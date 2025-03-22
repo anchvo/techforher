@@ -3,13 +3,17 @@
 {% block content %}
 
 <div class="container">
-    <h2>Contact Us</h2>
+    <div><h2>Contact Us</h2></div>
 </div>
+<div class="form-container">
+<div class="windows95-container">
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Submit</button>
 </form>
+</div>
+</div>
 
 <!-- index.html content ends here -->
 {% endblock %}

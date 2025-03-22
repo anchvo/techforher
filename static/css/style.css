@@ -289,3 +289,23 @@ nav {
         font-size: 0.9rem;
     }
 }
+
+/* Contactapp & Contact Form */
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.windows95-container {
+    width: 400px;
+    padding: 16px;
+    border: 2px solid #a0a0a0; /* Light gray border */
+    background-color: #c0c0c0; /* Classic Windows 95 window background */
+    font-family: 'MS Sans Serif', sans-serif;
+    box-shadow: 2px 2px 4px #000; /* Drop shadow for the window effect */
+    border-radius: 2px;
+  }
+  
