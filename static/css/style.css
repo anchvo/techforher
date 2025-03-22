@@ -35,7 +35,7 @@
 body {
     background-color: var(--background-color);
     color: var(--text-color);
-    font-family: Arial, sans-serif;
+    font-family: 'MS Sans Serif', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -290,22 +290,74 @@ nav {
     }
 }
 
+/* General Windows95 Styling */
+
+.windows95-style {
+    border: 2px solid #a0a0a0; /* Light gray border */
+    background-color: #c0c0c0; /* Classic Windows 95 window background */
+    box-shadow: 2px 2px 4px #000; /* Drop shadow for the window effect */
+    border-radius: 2px;
+    margin: 20px;
+}
+
 /* Contactapp & Contact Form */
 
 .form-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    font-family: 'MS Sans Serif', sans-serif;
 }
 
-.windows95-container {
-    width: 400px;
+.windows95-form {
+    margin-top: 40px;
+    width: 600px;
     padding: 16px;
     border: 2px solid #a0a0a0; /* Light gray border */
     background-color: #c0c0c0; /* Classic Windows 95 window background */
-    font-family: 'MS Sans Serif', sans-serif;
     box-shadow: 2px 2px 4px #000; /* Drop shadow for the window effect */
     border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
   }
+
+.windows95-form-title {
+    background-color: #000080;  /* Windows 95 blue color */
+    margin-bottom: 16px;  /* Space between title and form */
+    margin-top: 0;
+    width: 100%;
+}
+
+.windows95-form-title-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.windows95-field {
+    background-color: #ffffff;
+    border: 1px solid #000080;
+    font-size: 14px;
+    padding: 5px;
+    margin-top: 5px;
+    display: block;
+}
+
+.windows95-submit-button {
+    background-color: #000080;
+    color: #ffffff;
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid #000080;
+    margin-top: 10px;
+}
+
+.windows95-submit-button:hover {
+    background-color: #d3d3d3;
+    color: #000080;
+}
   

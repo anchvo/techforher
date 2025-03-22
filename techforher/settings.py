@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'homeapp',
     'contactapp',
+    "crispy_forms",
+    "crispy_tailwind",
 ]
 
 #Sign up form
@@ -166,3 +168,7 @@ EMAIL_PORT = 587  # Port used for TLS
 EMAIL_USE_TLS = True  # Enable TLS (Transport Layer Security) for security
 EMAIL_HOST_USER = 'ebovjhlm@students.codeinstitute.net'  # Your Gmail address
 EMAIL_HOST_PASSWORD = 'elvb uwhb gwuj utjt'  # Your Gmail password (use App Password if 2FA is enabled)
+
+# Crispy Forms with Tailwind CSS 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_TEMPLATE_PACK = "tailwind"
