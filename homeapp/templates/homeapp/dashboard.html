@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <div class="header">
-        {% if user.is_authenticated %}
+        {% if user and user.is_authenticated %}
             <p>Welcome, {{ user.username }}!</p>
             <a href="{% url 'account_logout' %}" class="btn btn-danger">Logout</a>
         {% else %}
@@ -15,16 +15,16 @@
         {% endif %}
     </div>
 
-    {% if user.is_authenticated %}
+    {% if user and user.is_authenticated %}
         <div class="profile">
             <h2>Your Profile</h2>
-            {% if profile.profile_picture %}
+            {% if profile and profile.profile_picture %}
                 <img src="{{ profile.profile_picture.url }}" alt="Profile Picture" class="profile-img">
             {% else %}
                 <p>No profile picture available.</p>
             {% endif %}
             <p>Email: {{ user.email }}</p>
-            {% if profile.bio %}
+            {% if profile and profile.bio %}
                 <p>Bio: {{ profile.bio }}</p>
             {% else %}
                 <p>No bio available.</p>
