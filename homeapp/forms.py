@@ -1,5 +1,30 @@
 from django import forms
-from .models import ForumPost, Mentorship
+from .models import ForumPost, Mentorship, CustomUser, Language
+from django import forms
+from allauth.account.forms import SignupForm
+
+#sign up form
+class CustomSignupForm(SignupForm):
+    role = forms.ChoiceField(choices=CustomUser.ROLE_CHOICES, required=True, label='Role')
+    preferred_languages = forms.ModelMultipleChoiceField(
+        queryset=Language.objects.all(),  # Queryset for the Language model
+        required=False,
+        widget=forms.CheckboxSelectMultiple,
+        label='Preferred Languages'
+    )
+
+    def __init__(self, *args, **kwargs):
+        super(CustomSignupForm, self).__init__(*args, **kwargs)
+        self.fields['role'].widget.attrs.update({'class': 'form-control'})
+        self.fields['preferred_languages'].widget.attrs.update({'class': 'form-control'})
+
+    def save(self, request):
+        user = super(CustomSignupForm, self).save(request)
+        user.role = self.cleaned_data['role']
+        user.preferred_languages.set(self.cleaned_data['preferred_languages'])
+        user.save()
+        return user
+
 
 class ForumPostForm(forms.ModelForm):
     class Meta:
