@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h3>Match Mentor to Mentee</h3>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Match</button>
+</form>
+
+<h4>Existing Mentorships:</h4>
+<ul>
+    {% for mentorship in mentorships %}
+        <li>{{ mentorship.mentor }} matched with {{ mentorship.mentee }} ({{ mentorship.preferred_language }})</li>
+    {% empty %}
+        <li>No mentorships found.</li>
+    {% endfor %}
+</ul>
+</div>
+
+<!-- match_mentor.html content ends here -->
+{% endblock %}
