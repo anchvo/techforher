@@ -22,23 +22,23 @@
 
     <!-- Display Search Results -->
     {% if search_results %}
-        <h4>Search Results:</h4>
-        <ul>
-            {% for mentor in search_results %}
-                <li>
-                    {{ mentor.username }} - {{ mentor.role }}
-                    <!-- Contact Mentor Button -->
-                    <form method="POST" style="display: inline;">
-                        {% csrf_token %}
-                        <input type="hidden" name="mentor_id" value="{{ mentor.id }}">
-                        <button type="submit" name="contact_mentor" class="btn btn-secondary">Contact</button>
-                    </form>
-                </li>
-            {% empty %}
-                <li>No mentors found for the selected language.</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    <h4>Search Results:</h4>
+    <ul>
+        {% for mentor in search_results %}
+            <li>
+                {{ mentor.username }} - {{ mentor.role }}
+                <form method="POST" style="display: inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="mentor_id" value="{{ mentor.id }}">
+                    {{ contact_form.as_p }}
+                    <button type="submit" name="contact_mentor" class="btn btn-secondary">Contact</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No mentors found for the selected language.</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
     <!-- Display Existing Mentorships -->
     <h3>Existing Mentorships</h3>
