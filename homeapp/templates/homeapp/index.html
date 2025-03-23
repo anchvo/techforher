@@ -21,8 +21,11 @@
     <p>
         Connect with others: <a href="{% url 'connections' %}"><img src="{% static 'icons/connections.png' %}" alt="connections icon"></a>
     </p>
+    <img src="{% static 'images/mentoring.png' %}" alt="Pixel style art of a person mentoring another person.">
     <p>Got questions? </p>
+    <img src="{% static 'images/question.png' %}" alt="Pixel style art of a person thinking about code.">
     <p>We got you!</p>
+    <img src="{% static 'images/solutionsimg.png' %}" alt="Pixel style art of a woman thinking about brilliant coding solutions">
     <p>Join the community: <a href="{% url 'forum' %}"><img src="{% static 'icons/community.png' %}" alt="community icon"></a></p>
     <p>Learn more about us: <a href="{% url 'about' %}"><img src="{% static 'icons/about.png' %}" alt="about icon"></a></p>
     {% if user.is_authenticated %}
