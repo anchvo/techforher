@@ -18,30 +18,30 @@
         Mentor Matrix is a space where mentoring meets the magic of inclusivity and technology.
         </p>
     <h3 class="rainy">Get Involved</h3>
-    <p>Build your profile: <a href="{% url 'dashboard' %}"><img src="{% static 'icons/profile.png' %}" alt="a computer"></a> </p>
+    <p>Register & build your profile: <a href="{% url 'account_signup' %}"><img src="{% static 'icons/profile.png' %}" alt="a computer"></a> </p>
     <p>
-        Connect with others: <a href="{% url 'connections' %}"><img src="{% static 'icons/connections.png' %}" alt="connections icon"></a>
+        Log in & make mentorship connections: <a href="{% url 'account_login' %}"><img src="{% static 'icons/connections.png' %}" alt="connections icon"></a>
     </p>
+    <p>Log in & join the community: <a href="{% url 'forum' %}"><img src="{% static 'icons/community.png' %}" alt="community icon"></a></p>
     <img src="{% static 'images/mentoring.png' %}" alt="Pixel style art of a person mentoring another person.">
-    <p>Got questions? </p>
+    <p>Got questions?</p> <a href="{% url 'contactapp-urls:contact' %}"></a>
     <img src="{% static 'images/question.png' %}" alt="Pixel style art of a person thinking about code.">
     <p>We got you!</p>
     <img src="{% static 'images/solutionsimg.png' %}" alt="Pixel style art of a woman thinking about brilliant coding solutions">
-    <p>Join the community: <a href="{% url 'forum' %}"><img src="{% static 'icons/community.png' %}" alt="community icon"></a></p>
     <p>Learn more about us: <a href="{% url 'about' %}"><img src="{% static 'icons/about.png' %}" alt="about icon"></a></p>
+    
+    <!-- Previous code, currently not needed 
     {% if user.is_authenticated %}
     <h1>Welcome, <span class="rainy"> {{ user.username }}!</span></h1>
     <p>Here is some information for logged-in users.</p>
     <p>You have <div>0</div> connections currently.</p>
-    <!-- Add more content for logged-in users here -->
     <p><a href="#">Log out</a></p><img src="{% static 'icons/logout.png' %}" alt="logout icon">
-
-
-{% else %}
+    {% else %}
     <h1>Welcome to Mentor Matrix</h1>
     <p>This is a space to find others with experience and to share your own knowledge.</p>
     <p>Please <a href="">log in</a> to access more features.</p>
-{% endif %}
+    {% endif %}
+    -->
 </div>
 
 

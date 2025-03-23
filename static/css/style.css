@@ -40,6 +40,10 @@ body {
     padding: 0;
 }
 
+main {
+    margin-bottom: 30px;
+}
+
 nav {
     background-color: var(--background-color);
     padding: 10px 0;
