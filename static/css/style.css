@@ -19,11 +19,18 @@
         U+20AC, U+3000;
 }
 
+@font-face {
+  font-family: "w95fa";
+  src: url("w95fa.woff");
+  src: url("w95fa.woff2");
+  font-weight: normal;
+}
+
 .header {
     font-family: rainyhearts, sans-serif;
     background-color: var(--ui-color);
     box-shadow: 10px 10px 0 0 var(--ui-color-dark);
-    font-size: 3em;
+    font-size: 1.5em;
     text-align: left;
     max-width: fit-content;
     margin: 15px;
@@ -35,7 +42,7 @@
 body {
     background-color: var(--background-color);
     color: var(--text-color);
-    font-family: 'MS Sans Serif', sans-serif;
+    font-family: w95fa, sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -201,7 +208,7 @@ td, th {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'MS Sans Serif', sans-serif;
+    font-family: w95fa, sans-serif;
 }
 
 .windows95-form {
@@ -320,7 +327,7 @@ td, th {
 .navbar {
     background-color: var(--background-color);
     color: var(--text-color);
-    font-family: 'MS Sans Serif', sans-serif;
+    font-family: w95fa, sans-serif;
 }
 
 .navbar a {
