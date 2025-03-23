@@ -27,6 +27,7 @@
             </div>
             <button type="submit" class="windows95-submit-button">Submit Post</button>
         </form>
+        <div class="pt-4"></div>
         <ul>
             {% for reply in post.replies.all %}
             <li>{{ reply.content }} - {{ reply.user }}</li>
@@ -35,5 +36,6 @@
             {% endfor %}
         </ul>
     </div>
+</div>
 </div>
 {% endblock %}
