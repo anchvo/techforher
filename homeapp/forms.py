@@ -18,6 +18,7 @@ class CustomSignupForm(SignupForm):
         widget=forms.CheckboxSelectMultiple,
         label='Preferred Languages'
     )
+    
 
     def __init__(self, *args, **kwargs):
         super(CustomSignupForm, self).__init__(*args, **kwargs)

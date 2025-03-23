@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import ContactRequest, CustomUser, ForumPost, Mentorship, Message, Reply, Language
+from .models import ContactRequest, CustomUser, ForumPost, Mentorship, Message, Reply, Language, Profile
 
 @admin.register(CustomUser)
 class CustomUserAdmin(admin.ModelAdmin):
@@ -38,3 +38,7 @@ class ContactRequestAdmin(admin.ModelAdmin):
 @admin.register(Language)
 class LanguageAdmin(admin.ModelAdmin):
     list_display = ('name',)
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'profile_picture', 'bio')
