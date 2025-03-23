@@ -18,6 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 from allauth.account.views import SignupView
 from homeapp.forms import CustomSignupForm
+from django.shortcuts import render
+from django.conf.urls import handler404, handler500
+from .views import custom_404, custom_500
+from django.views.defaults import page_not_found
 
 urlpatterns = [
     path("", include("homeapp.urls"), name="homeapp-urls"),
@@ -26,4 +30,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("contactapp/", include("contactapp.urls"), name="contactapp-urls"),
     path('summernote/', include('django_summernote.urls')),
+    path('404/', page_not_found, {'exception': Exception()}),
 ]
+
+handler404 = custom_404
+handler500 = custom_500
