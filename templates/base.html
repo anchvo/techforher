@@ -26,33 +26,33 @@
 <header>
 
 <!-- Navbar -->
-<nav class="w-full bg-teal-700 shadow-md p-4 flex items-end relative">
+<nav class="navbar w-full shadow-md p-4 flex items-end relative">
     <h1 class="header">Mentor Matrix</h1>
     <button id="menu-toggle" class="lg:hidden text-white text-3xl focus:outline-none ml-auto">
         ☰
     </button>
 
     <div id="menu"
-        class="hidden lg:flex items-center gap-2 absolute top-full w-auto bg-teal-700 lg:static bottom-0 right-0 pr-4 bg-teal-700 lg:bg-transparent w-full lg:w-auto flex flex-col lg:flex-row ml-auto">
+        class="hidden lg:flex items-center gap-2 absolute top-full w-auto lg:static bottom-0 right-0 pr-4 lg:bg-transparent w-full lg:w-auto flex flex-col lg:flex-row ml-auto">
         <a href="{% url 'home' %}"
-            class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">home</a>
+            class="px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border">home</a>
         {% if user.is_authenticated %}
         <a href="{% url 'dashboard' %}"
-            class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">dashboard</a>
+            class="px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">dashboard</a>
         <a href="{% url 'forum' %}"
-            class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">community</a>
+            class="px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">community</a>
         <a href="{% url 'connections' %}"
-            class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">connections</a>
+            class="px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">connections</a>
         <a href="{% url 'account_logout' %}"
-            class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">log out</a>
+            class="px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">log out</a>
         {% else %} 
         <a href="{% url 'account_signup' %}"
-        class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">register</a>
+        class="px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">register</a>
         <a href="{% url 'account_login' %}"
-        class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">log in</a>   
+        class="px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">log in</a>   
         {% endif %}
         <a href="{% url 'about' %}"
-            class="px-4 py-2 bg-gray-200 text-black font-mono text-lg hover:bg-white hover:text-black rounded-t-md border border-black">about
+            class="px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">about
             us</a>
     </div>
 </nav>
