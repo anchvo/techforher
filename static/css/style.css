@@ -277,6 +277,15 @@ nav {
     color: #000080;
 }
 
+.index-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+    
+
+
 /* Forum Template styles */
 /* Style form fields */
 #id_title, #id_content {
