@@ -1,69 +1,95 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
+<div
+  class="windows95-container w-[80%] mx-auto mt-10 p-4 border-2 border-gray-400 bg-gray-300 shadow-md rounded-md"
+>
+  <div class="windows95-form-title">
+    <h2 class="windows95-form-title-text">Dashboard</h2>
+  </div>
+  <div class="header sm:text-lg">
+    {% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}!</p>
+    {% endif %}
+  </div>
 
-{% block content %}
-<div class="container">
-    <div class="header">
-        {% if user.is_authenticated %}
-            <p>Welcome, {{ user.username }}!</p>
-            <a href="{% url 'account_logout' %}" class="btn btn-danger">Logout</a>
-        {% endif %}
+  <div
+    class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+    {% if user.is_authenticated %}
+    <div
+      class="windows95-box max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+      <div class="windows95-form-title">
+        <h2 class="windows95-form-title-text">Your Profile</h2>
+      </div>
+      <table class="w-full">
+        <tr>
+            <td class="text-left font-semibold">Email:</td>
+            {% if user.email %}
+            <td class="text-right">{{ user.email }}</td>
+            {% else %}
+            <td class="text-right">You haven't set up an email yet.</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td class="text-left font-semibold">Bio:</td>
+            {% if profile.bio %}
+            <td class="text-right">{{ profile.bio }}</td>
+            {% else %}
+            <td class="text-right">You haven't set up your bio yet.</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td class="text-left font-semibold">Preferred Languages: </td>
+            {% if user.preferred_languages %}
+            {% for language in user.preferred_languages.all %}
+            <td class="text-right">{{ language.name }}</td>
+            {% endfor %}
+            {% else %}
+            <td class="text-right">No preferred languages available.</td>
+            {% endif %}
+        </tr>
+    </table>
+      <a href="{% url 'profile' %}" class="windows95-submit-button">Edit Profile</a>
     </div>
 
-    {% if user.is_authenticated %}
-        <div class="profile">
-            <h2>Your Profile</h2>
-            {% if profile.profile_picture %}
-                <img src="{{ profile.profile_picture.url }}" alt="Profile Picture" class="profile-img">
+    <div
+      class="windows95-box max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+      <div class="windows95-form-title">
+        <h2 class="windows95-form-title-text">Recent Community Posts</h2>
+      </div>
+      <table class="w-full">
+        {% if posts %} 
+        {% for post in posts %}
+        <tr>
+            <td class="text-left font-semibold">{{ post.title }}</td>
+            <td class="text-right">{{ post.content|truncatewords:20 }}</td>
+            {% endfor %}
             {% else %}
-                <p>No profile picture available.</p>
+            <td class="text-left font-semibold">No recent forum posts.</td>
             {% endif %}
-            <p>Email: {{ user.email }}</p>
-            {% if profile.bio %}
-                <p>Bio: {{ profile.bio }}</p>
-            {% else %}
-                <p>No bio available.</p>
-            {% endif %}
-            {% if user.preferred_languages %}
-                <p>Preferred Languages:</p>
-                <ul>
-                    {% for language in user.preferred_languages.all %}
-                    <li>{{ language.name }}</li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No preferred languages available.</p>
-            {% endif %}
-            <a href="{% url 'profile' %}" class="btn btn-primary">Edit Profile</a>
-        </div>
+        </tr>
+    </table>
+      <a href="{% url 'forum' %}" class="windows95-submit-button">View Community</a>
+    </div>
 
-        <div class="recent-posts">
-            <h3>Recent Forum Posts</h3>
-            {% if posts %}
-                {% for post in posts %}
-                    <div class="post">
-                        <h4>{{ post.title }}</h4>
-                        <p>{{ post.content|truncatewords:20 }}</p>
-                    </div>
-                {% endfor %}
-                <a href="{% url 'forum' %}">View All Forum Posts</a>
+    <div
+      class="windows95-box max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+      <div class="windows95-form-title">
+        <h2 class="windows95-form-title-text">Messages</h2>
+      </div>
+      <table class="w-full">
+        {% if messages %}
+        {% for message in messages %}
+        <tr>
+            <td class="text-left font-semibold">{{ message.sender.username }}:</td>
+            <td class="text-right">{{ message.content|truncatewords:10 }}</td>
+            {% endfor %}
             {% else %}
-                <p>No recent forum posts.</p>
+            <td class="text-left font-semibold">No messages yet.</td>
             {% endif %}
-        </div>
-
-        <div class="messages">
-            <h3>Messages</h3>
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="message">
-                        <p><strong>{{ message.sender.username }}:</strong> {{ message.content|truncatewords:10 }}</p>
-                    </div>
-                {% endfor %}
-                <a href="#">See All Messages</a>
-            {% else %}
-                <p>No messages yet.</p>
-            {% endif %}
-        </div>
+        </tr>
+    </table>
+    <a href="{% url 'connections' %}" class="windows95-submit-button">Make Connections</a>
+    </div>
     {% endif %}
+  </div>
+  {% endblock %}
 </div>
-{% endblock %}

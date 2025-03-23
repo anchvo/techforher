@@ -120,6 +120,11 @@ nav {
     background-color: darkred;
 }
 
+/* Connections Page */
+.mentor-search-button {
+    margin-bottom: 5px;
+} 
+
 /* Style the Sign Up form */
 .signup {
     width: 400px; /* Adjust width as needed */
@@ -204,6 +209,20 @@ nav {
 }
 
 .windows95-container {
+    margin-top: 40px;
+    padding: 16px;
+    border: 2px solid #a0a0a0; /* Light gray border */
+    background-color: #c0c0c0; /* Classic Windows 95 window background */
+    box-shadow: 2px 2px 4px #000; /* Drop shadow for the window effect */
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.windows95-box {
+    width: 400px;
     margin-top: 40px;
     padding: 16px;
     border: 2px solid #a0a0a0; /* Light gray border */
@@ -323,6 +342,12 @@ nav {
 @media (min-width: 1080px) and (max-width: 1280px) {
     .windows95-form {
         width: 400px;
+    }
+}
+
+@media (min-width: 1280px) and (max-width: 1440px) {
+    .windows95-box {
+        width: 320px;
     }
 }
 
