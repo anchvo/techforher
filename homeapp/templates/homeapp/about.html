@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} 
+{% load static %}
+{% block content %}
 
 <!-- Page Content -->
 
@@ -13,7 +15,7 @@
       <h2 class="windows95-form-title-text">Anne</h2>
       </div>
       <div class="about-images">
-        <p>Image goes here</p>
+        <img src="{% static 'images/profile-anne.png' %}" alt="Anne's profile image">
       </div>
       <table class="w-full">
         <tr>
@@ -33,7 +35,7 @@
             <h2 class="windows95-form-title-text">Amina</h2>
         </div>
         <div class="about-images">
-            <p>Image goes here</p>
+            <img src="{% static 'images/profile-amina.png' %}" alt="Amina's profile image">
         </div>
         <table class="w-full">
             <tr>
@@ -93,7 +95,7 @@
             <h2 class="windows95-form-title-text">Jo</h2>
         </div>
         <div class="about-images">
-            <p>Image goes here</p>
+            <img src="{% static 'images/profile-jo.png' %}" alt="Jo's profile image">
         </div>
         <table class="w-full">
             <tr>
@@ -113,7 +115,7 @@
             <h2 class="windows95-form-title-text">Noah</h2>
         </div>
         <div class="about-images">
-            <p>Image goes here</p>
+            <img src="{% static 'images/profile-noah.png' %}" alt="Noah's profile image">
         </div>
         <table class="w-full">
             <tr>
@@ -133,7 +135,7 @@
             <h2 class="windows95-form-title-text">Nonty</h2>
         </div>
         <div class="about-images">
-            <p>Image goes here</p>
+            <img src="{% static 'images/profile-nonty.png' %}" alt="Nonty's profile image">
         </div>
         <table class="w-full">
             <tr>
