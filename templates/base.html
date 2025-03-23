@@ -8,26 +8,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="192x192" href="{% static 'favicon-192x192.png' %}">
+    <link rel="manifest" href="{% static 'site.webmanifest' %}">
+
 </head>
 
-<body class="bg-gray-100 flex flex-col min-h-screen"></body>>
+<body class="bg-gray-100 flex flex-col min-h-screen">
 
 <header>
     <h1 class="header">Mentor Matrix</h1>
 </header>
-<!-- Header / Navigation -->
 <nav class="w-full bg-teal-700 shadow-md p-4 flex items-end relative">
     <p class="text-3xl font-mono font-bold text-black bg-gray-200 px-4 py-2 rounded-t-lg">Mentor Matrix</p>
 
-    <!-- Hamburger Menu Button -->
     <button id="menu-toggle" class="lg:hidden text-white text-3xl focus:outline-none ml-auto">
         ☰
     </button>
-
-
 
     <div id="menu"
         class="hidden lg:flex items-center gap-2 absolute top-full w-auto bg-teal-700 lg:static bottom-0 right-0 pr-4 bg-teal-700 lg:bg-transparent w-full lg:w-auto flex flex-col lg:flex-row ml-auto">
@@ -54,14 +56,10 @@
     </div>
 </nav>
 
-<!-- Main Content -->
 <main class="flex-grow">
     {% block content %}
-    <!-- Content -->
     {% endblock content %}
 </main>
-
-<!-- Footer -->
 
 <footer class="w-full bg-teal-700 shadow-md p-4 flex items-center justify-between bottom-0 left-0">
     <p class="ml-4 text-base sm:text-lg font-mono font-bold text-black bg-gray-200 px-4 py-2 rounded-b-lg">Mentor
@@ -72,18 +70,11 @@
     <p class="ml-4 mr-4 text-base sm:text-lg font-mono bg-gray-200 px-4 py-2 rounded-b-lg">
         <a href="{% url 'contactapp-urls:contact' %}" class="text-black font-bold hover:text-teal-700 text-lg font-mono">Contact Us</a>
     </p>
-
-
 </footer>
 
-<!--Scripts -->
 <script src="../static/js/script.js"></script>
-
-<!-- Custom JS -->
 
 <script src="{% static 'js/script.js' %}"></script>
 
 </body>
-
-
 </html>
