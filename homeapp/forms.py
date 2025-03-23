@@ -1,5 +1,5 @@
 from django import forms
-from .models import ForumPost, Mentorship, CustomUser, Language, Profile
+from .models import ForumPost, Mentorship, CustomUser, Language, Profile, Reply
 from django import forms
 from allauth.account.forms import SignupForm
 
@@ -38,6 +38,12 @@ class ForumPostForm(forms.ModelForm):
     class Meta:
         model = ForumPost
         fields = ['title', 'content', 'is_anonymous']
+
+
+class ReplyForm(forms.ModelForm):
+    class Meta:
+        model = Reply
+        fields = ['content']
 
 class MentorSearchForm(forms.Form):
     """
