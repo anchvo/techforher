@@ -6,12 +6,6 @@
         {% if user.is_authenticated %}
             <p>Welcome, {{ user.username }}!</p>
             <a href="{% url 'account_logout' %}" class="btn btn-danger">Logout</a>
-        {% else %}
-            <p>Welcome to our platform! Please sign up or log in.</p>
-            <div class="auth-buttons">
-                <a href="{% url 'account_login' %}" class="btn btn-primary">Login</a>
-                <a href="{% url 'account_signup' %}" class="btn btn-success">Sign Up</a>
-            </div>
         {% endif %}
     </div>
 
@@ -69,10 +63,6 @@
             {% else %}
                 <p>No messages yet.</p>
             {% endif %}
-        </div>
-    {% else %}
-        <div class="guest-message">
-            <p>Explore our community by logging in or creating an account.</p>
         </div>
     {% endif %}
 </div>
