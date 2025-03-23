@@ -27,7 +27,8 @@ def dashboard(request):
 
         posts = ForumPost.objects.all()[:5]  # Example: Get recent posts
         messages = []  # Add your messages model here if you have one.
-        context = {'profile': profile, 'user': request.user, 'posts': posts, 'messages': messages}
+        preferred_languages = request.user.preferred_languages.all()
+        context = {'profile': profile, 'user': request.user, 'posts': posts, 'messages': messages, 'preferred_languages': preferred_languages}
     else:
         context = {'user': request.user}
     return render(request, 'homeapp/dashboard.html', context)
