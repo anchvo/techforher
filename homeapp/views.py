@@ -20,6 +20,8 @@ User = get_user_model()
 def index(request):
     return render(request, 'homeapp/index.html')
 
+
+@login_required
 def dashboard(request):
     if request.user.is_authenticated and isinstance(request.user, CustomUser): #added CustomUser check
         try:
@@ -38,6 +40,8 @@ def dashboard(request):
 def about(request):
     return render(request, 'homeapp/about.html')
 
+
+@login_required
 def forum(request):
     if request.method == 'POST':
         form = ForumPostForm(request.POST)
@@ -51,6 +55,8 @@ def forum(request):
     posts = ForumPost.objects.all()
     return render(request, 'homeapp/forum.html', {'posts': posts, 'form': form})
 
+
+@login_required
 def connect(request):
     """
     Handles mentor search, contact functionality, and displays mentorships.
@@ -95,6 +101,7 @@ def connect(request):
         'message_sent': message_sent
     })
 
+
 @staff_member_required
 def match_mentor(request):
     """
@@ -111,9 +118,12 @@ def match_mentor(request):
     mentorships = Mentorship.objects.all()
     return render(request, 'homeapp/match_mentor.html', {'form': form, 'mentorships': mentorships})
 
+
+@login_required
 def post_detail(request, post_id):
     post = get_object_or_404(ForumPost, id=post_id)
     return render(request, 'homeapp/post_detail.html', {'post': post})
+
 
 @login_required
 def edit_profile(request):

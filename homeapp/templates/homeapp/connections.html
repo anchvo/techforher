@@ -1,6 +1,7 @@
 {% extends "base.html" %} {% block content %}
 <div
-  class="windows95-container w-[80%] mx-auto mt-10 p-4 border-2 border-gray-400 bg-gray-300 shadow-md rounded-md">
+  class="windows95-container w-[80%] mx-auto mt-10 p-4 border-2 border-gray-400 bg-gray-300 shadow-md rounded-md"
+>
   <div class="windows95-form-title">
     <h2 class="windows95-form-title-text">Mentorship Connections</h2>
   </div>
@@ -14,51 +15,58 @@
   {% endif %}
 
   <div
-  class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-6">
-
-  <div class="windows95-form max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
-    <div class="windows95-form-title">
-    <h2 class="windows95-form-title-text">Search for a Mentor</h2>
-    </div>
-    <form class="mentor-search-form" method="POST">
+    class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-6"
+  >
+    <div
+      class="windows95-form max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto"
+    >
+      <div class="windows95-form-title">
+        <h2 class="windows95-form-title-text">Search for a Mentor</h2>
+      </div>
+      <form class="mentor-search-form" method="POST">
         {% csrf_token %} {{ search_form.as_p }}
-        <button type="submit" name="search_mentor" class="windows95-submit-button mentor-search-button">
+        <button
+          type="submit"
+          name="search_mentor"
+          class="windows95-submit-button mentor-search-button"
+        >
           Search
         </button>
       </form>
       <!-- Display Search Results -->
-    <div class="windows95-form-title mentor-result-form">
+      <div class="windows95-form-title mentor-result-form">
         <h2 class="windows95-form-title-text">Search Results</h2>
-    </div> 
-    {% if search_results %}
-    {% for mentor in search_results %}
-    <table class="w-full">
+      </div>
+      {% if search_results %} {% for mentor in search_results %}
+      <table class="w-full">
         <tr>
-            <td class="text-left font-semibold">Mentor: </td>
-            <td class="text-right"> {{ mentor.username }}</td>
-            <td>
-           <!-- Contact Mentor Button -->
-          <form method="POST" style="display: inline">
-            {% csrf_token %}
-            <input type="hidden" name="mentor_id" value="{{ mentor.id }}" />
-            {{ contact_form.as_p }}
-            <button
-              type="submit"
-              name="contact_mentor"
-              class="windows95-submit-button">Send Message
-            </button>
-          </form> 
-           </td>
+          <td class="text-left font-semibold">Mentor:</td>
+          <td class="text-right">{{ mentor.username }}</td>
+          <td>
+            <!-- Contact Mentor Button -->
+            <form method="POST" style="display: inline">
+              {% csrf_token %}
+              <input type="hidden" name="mentor_id" value="{{ mentor.id }}" />
+              {{ contact_form.as_p }}
+              <button
+                type="submit"
+                name="contact_mentor"
+                class="windows95-submit-button">
+                Send Message
+              </button>
+            </form>
+          </td>
         </tr>
         {% empty %}
         <tr>
-            <td class="text-left font-semibold">No mentors found for the selected language.</td>
+          <td class="text-left font-semibold">
+            No mentors found for the selected language.
+          </td>
         </tr>
         {% endfor %}
-    </table>
-    {% endif %}
-  </div>
-
+      </table>
+      {% endif %}
+    </div>
 
     <!-- Match Mentor to Mentee (Admin Only) -->
     {% if request.user.is_staff %}
@@ -72,26 +80,28 @@
     {% endif %}
 
     <!-- Right Section: Existing Mentorships -->
-    <div class="windows95-box max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+    <div
+      class="windows95-box max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto"
+    >
       <!-- Display Existing Mentorships -->
       <div class="windows95-form-title mentor-result-form">
         <h2 class="windows95-form-title-text">Existing Mentorships:</h2>
-    </div> 
-        {% for mentorship in mentorships %}
-        <table>
-          <tr>
-            <td>{{ mentorship.mentor }} matched with {{ mentorship.mentee }}</td>
-          </tr>
-          <tr>
-            <td>Preferred Languages: </td>
-            <td>{{mentorship.preferred_language }}</td>
-          </tr>
-          {% empty %}
-          <tr>
-            <td>No mentorships found.</td>
-          </tr>
-        </table>
-        {% endfor %}
+      </div>
+      {% for mentorship in mentorships %}
+      <table>
+        <tr>
+          <td>{{ mentorship.mentor }} matched with {{ mentorship.mentee }}</td>
+        </tr>
+        <tr>
+          <td>Preferred Languages:</td>
+          <td>{{mentorship.preferred_language }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td>No mentorships found.</td>
+        </tr>
+      </table>
+      {% endfor %}
     </div>
   </div>
 </div>
