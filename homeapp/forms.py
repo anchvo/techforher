@@ -79,6 +79,7 @@ class ProfileForm(forms.ModelForm):
         fields = ['bio']
 
 class UserForm(forms.ModelForm):
+    email = forms.EmailField(required=True)
     preferred_languages = forms.ModelMultipleChoiceField(
         queryset=CustomUser.preferred_languages.field.related_model.objects.all(),
         widget=forms.CheckboxSelectMultiple,
@@ -86,4 +87,4 @@ class UserForm(forms.ModelForm):
     )
     class Meta:
         model = CustomUser
-        fields = ['preferred_languages']    
+        fields = [ 'email', 'preferred_languages']    
