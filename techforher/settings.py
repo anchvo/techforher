@@ -53,6 +53,9 @@ INSTALLED_APPS = [
     'homeapp',
 ]
 
+# Set custom user model
+AUTH_USER_MODEL = 'homeapp.CustomUser'
+
 #Sign up form
 
 ACCOUNT_FORMS = {
