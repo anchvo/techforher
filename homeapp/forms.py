@@ -27,8 +27,9 @@ class CustomSignupForm(SignupForm):
     def save(self, request):
         user = super(CustomSignupForm, self).save(request)
         user.role = self.cleaned_data['role']
+        user.save() 
         user.preferred_languages.set(self.cleaned_data['preferred_languages'])
-        user.save()
+        user.save() #Saving again save the many-to-many relationship
         return user
 
 

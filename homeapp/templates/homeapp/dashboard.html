@@ -29,6 +29,16 @@
             {% else %}
                 <p>No bio available.</p>
             {% endif %}
+            {% if user.preferred_languages %}
+                <p>Preferred Languages:</p>
+                <ul>
+                    {% for language in user.preferred_languages.all %}
+                    <li>{{ language.name }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No preferred languages available.</p>
+            {% endif %}
             <a href="#" class="btn btn-primary">Edit Profile</a>
         </div>
 

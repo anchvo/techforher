@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from allauth.account.views import SignupView
+from homeapp.forms import CustomSignupForm
 
 urlpatterns = [
     path("", include("homeapp.urls"), name="homeapp-urls"),
     path("account/", include("allauth.urls")),
+    path('account/signup/', SignupView.as_view(form_class=CustomSignupForm), name='account_signup'),
     path('admin/', admin.site.urls),
     path("contactapp/", include("contactapp.urls"), name="contactapp-urls"),
     path('summernote/', include('django_summernote.urls')),
