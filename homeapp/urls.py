@@ -8,4 +8,5 @@ urlpatterns = [
         path('forum/', views.forum, name='forum'),
         path('connections/', views.connect, name='connections'),
         path('post/<int:post_id>/', views.post_detail, name='post_detail'),
+        path('profile/', views.edit_profile, name='profile'),
 ]

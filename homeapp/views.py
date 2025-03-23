@@ -10,8 +10,9 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.admin.views.decorators import staff_member_required
 from .models import ForumPost, Mentorship, CustomUser
-from .forms import ForumPostForm, MentorSearchForm, ContactMentorForm, MentorshipForm
+from .forms import ForumPostForm, MentorSearchForm, ContactMentorForm, MentorshipForm, UserForm
 from django.contrib.auth import get_user_model
+from .forms import ProfileForm, UserForm
 
 User = get_user_model()
 
@@ -117,3 +118,20 @@ def match_mentor(request):
 def post_detail(request, post_id):
     post = get_object_or_404(ForumPost, id=post_id)
     return render(request, 'homeapp/post_detail.html', {'post': post})
+
+@login_required
+def edit_profile(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    user_form = UserForm(instance=request.user)
+
+    if request.method == 'POST':
+        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        user_form = UserForm(request.POST, instance=request.user)
+        if profile_form.is_valid() and user_form.is_valid():
+            profile_form.save()
+            user_form.save()
+            return redirect('dashboard')  # Adjust as needed
+    else:
+        profile_form = ProfileForm(instance=profile)
+
+    return render(request, 'homeapp/profile.html', {'form': profile_form, 'user_form': user_form})

@@ -1,5 +1,5 @@
 from django import forms
-from .models import ForumPost, Mentorship, CustomUser, Language
+from .models import ForumPost, Mentorship, CustomUser, Language, Profile
 from django import forms
 from allauth.account.forms import SignupForm
 
@@ -65,3 +65,18 @@ class MentorshipForm(forms.ModelForm):
     class Meta:
         model = Mentorship
         fields = ['mentor', 'mentee', 'status', 'preferred_language']
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['profile_picture', 'bio']
+
+class UserForm(forms.ModelForm):
+    preferred_languages = forms.ModelMultipleChoiceField(
+        queryset=CustomUser.preferred_languages.field.related_model.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False
+    )
+    class Meta:
+        model = CustomUser
+        fields = ['preferred_languages']        
