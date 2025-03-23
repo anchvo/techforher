@@ -307,7 +307,37 @@ nav {
     min-height: 700px;
 }
     
+/* Windows 95 form styling */
+#id_username,
+#id_email,
+#id_password1,
+#id_password2,
+#id_login,
+#id_password,
+#id_message,
+#id_preferred_language,
+#id_mentor,
+#id_mentee,
+#id_bio,
+#id_status,
+#id_name,
+#id_subject,
+#id_role, 
+#id_title, 
+#id_content {
+  border: inset #000 2px;
+  border-radius: 2px;
+  background-color: #ffffff;
+  box-shadow: inset 0 2px 0 0 rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  padding: 5px;
+  margin-top: 5px;
+}
 
+#id_message,
+#id_bio {
+  display: block;
+}
 
 /* Forum Template styles */
 /* Style form fields */
