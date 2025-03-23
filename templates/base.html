@@ -25,7 +25,50 @@
 
 <header>
 
-<!-- Navbar -->
+        <!-- Navbar -->
+        <nav class="navbar w-full shadow-md p-4 flex items-end relative">
+            <a class="header" href="{% url 'home' %}">
+              <h1>Mentor Matrix</h1>
+            </a>
+        
+            <!-- Burger toggle icon for smaller screens -->
+            <button id="menu-toggle" class="burger-icon lg:hidden text-white text-3xl focus:outline-none ml-auto">
+              ☰
+            </button>
+        
+            <!-- Menu links (hidden on small screens, shown when menu is toggled) -->
+            <div id="menu" class="menu hidden lg:flex items-center gap-2 absolute top-full w-auto lg:static bottom-0 right-0 pr-4 lg:bg-transparent w-full lg:w-auto flex flex-col lg:flex-row ml-auto">
+              <a href="{% url 'home' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border">
+                home
+              </a>
+              {% if user.is_authenticated %}
+              <a href="{% url 'dashboard' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">
+                dashboard
+              </a>
+              <a href="{% url 'forum' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">
+                community
+              </a>
+              <a href="{% url 'connections' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">
+                connections
+              </a>
+              <a href="{% url 'account_logout' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">
+                log out
+              </a>
+              {% else %}
+              <a href="{% url 'account_signup' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">
+                register
+              </a>
+              <a href="{% url 'account_login' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">
+                log in
+              </a>
+              {% endif %}
+              <a href="{% url 'about' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">
+                about us
+              </a>
+            </div>
+          </nav>
+
+<!-- Old Navbar
 <nav class="navbar w-full shadow-md p-4 flex items-end relative">
     <a class='header' href="{% url 'home' %}">
         <h1>Mentor Matrix</h1>
@@ -58,6 +101,8 @@
             us</a>
     </div>
 </nav>
+
+--> 
 </header>
 
 <!-- Main Content / Extending to templates -->

@@ -93,6 +93,72 @@ footer {
     /* Soft shadow */
 }
 
+/* Navbar Toggle CSS Version  */
+/* Burger Icon (visible only on medium and small screens) */
+.burger-icon {
+    display: none; /* Hide on large screens */
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: var(--text-color); /* Use the theme text color */
+    margin-left: auto;
+}
+
+/* Dropdown Menu */
+.menu {
+    display: flex; /* Default: horizontal layout on large screens */
+    flex-direction: row;
+    gap: 20px;
+    width: auto; /* Prevent menu from stretching across the whole screen */
+    background-color: var(--background-color); /* Match background with navbar */
+}
+
+/* Style for each menu item */
+.menu-item {
+    text-decoration: none;
+    color: var(--text-color); 
+    font-size: 1rem;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for menu items */
+.menu-item:hover {
+    background-color: var(--ui-color-dark); /* Hover color from your theme */
+}
+
+/* Mobile and Tablet Styles (for medium and small screens) */
+@media (max-width: 1024px) {
+    /* Show the burger icon only on medium and small screens */
+    .burger-icon {
+        display: block; /* Show burger icon on medium and small screens */
+        
+    }
+
+    /* Hide the menu by default on medium and small screens */
+    .menu {
+        display: none; /* Hide menu by default on medium/small screens */
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--background-color);
+        padding: 10px;
+        gap: 10px;
+        border-radius: 5px;
+    }
+
+    /* When the show class is added, display the menu */
+    .menu.show {
+        display: flex; /* Show menu when toggled */
+    }
+
+    /* Make each menu item take full width on small screens */
+    .menu-item {
+        text-align: center;
+        width: 60%;
+        padding: 15px;
+    }
+}
+
 /* Flexbox for Profile Layout */
 .profile {
     display: flex;
