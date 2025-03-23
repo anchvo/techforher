@@ -169,6 +169,26 @@ nav {
     flex-direction: column;
 }
 
+/* General Table Styles */
+
+table {
+    width: 100%; /* Ensure the table itself takes up the full available width */
+    border-collapse: collapse;
+}
+
+tr {
+    display: flex;
+    width: 100%; /* Make the row take full width */
+    margin-bottom: 10px; /* Add space between rows */
+}
+
+td, th {
+    display: flex;
+    flex: 1; /* Ensure each cell takes up equal width */
+    padding: 10px;
+    flex-basis: 0; /* Ensure that the cells take up equal width */
+}
+
 /* Contactapp & Contact Form */
 
 .form-container {
