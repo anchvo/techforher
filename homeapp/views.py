@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.views import generic
 
-from .models import ForumPost, Mentorship, Profile, CustomUser  # Import CustomUser
+from .models import ForumPost, Mentorship, Profile, CustomUser, Message
 from .forms import ForumPostForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
@@ -75,18 +75,14 @@ def connect(request):
     # Handle contact functionality
     elif request.method == 'POST' and 'contact_mentor' in request.POST:
         contact_form = ContactMentorForm(request.POST)
-        print(f"POST data: {request.POST}") # Debugging
         if contact_form.is_valid():
             mentor_id = request.POST.get('mentor_id')
-            print(f"Mentor ID received: {mentor_id}") # Debugging
-            message = contact_form.cleaned_data['message']            
+            message = contact_form.cleaned_data['message']
             if mentor_id:
                 mentor = CustomUser.objects.get(id=mentor_id)
-                # Example: Save the message or send an email (customize as needed)
+                Message.objects.create(sender=request.user, receiver=mentor, content=message)
                 print(f"Message sent to mentor: {mentor.username}")
                 message_sent = True
-        else:
-            print("Contact form errors:", contact_form.errors)  # Debugging: Print form errors
 
 
     mentorships = Mentorship.objects.all()
