@@ -30,11 +30,16 @@
     font-family: rainyhearts, sans-serif;
     background-color: var(--ui-color);
     box-shadow: 10px 10px 0 0 var(--ui-color-dark);
-    font-size: 1.5em;
+    
     text-align: left;
     max-width: fit-content;
     margin: 15px;
     padding: 20px 30px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5em;
 }
 
 /* global styles */
