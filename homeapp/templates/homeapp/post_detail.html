@@ -1,16 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.content }}</p>
-    <p>Posted by: {{ post.user }}</p>
-
-    <h3>Replies</h3>
+<div
+  class="windows95-container w-[80%] mx-auto mt-10 p-4 border-2 border-gray-400 bg-gray-300 shadow-md rounded-md">
+    <div class="windows95-form-title">
+        <h2 class="windows95-form-title-text">{{ post.title }}</h2>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td class="text-left font-semibold">Posted by: {{ post.user }}</td>
+            </tr>
+            <tr>
+                <td>{{ post.content }}</td>
+            </tr>
+        </table>    
+    </div>
+  <div>
+    <div class="windows95-form-title">
+        <h2 class="windows95-form-title-text">Replies</h2>
+    </div>
     <ul>
         {% for reply in post.replies.all %}
             <li>{{ reply.content }} - {{ reply.user }}</li>
+        {% empty %}
+            <li>There are no replies yet.</li>
         {% endfor %}
     </ul>
+  </div>
 </div>
 {% endblock %}
