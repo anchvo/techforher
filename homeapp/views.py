@@ -5,6 +5,7 @@ from django.views import generic
 from .models import ForumPost, Mentorship, Profile, CustomUser  # Import CustomUser
 from .forms import ForumPostForm
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 
 from django.db.models import Q
 from django.contrib.admin.views.decorators import staff_member_required
@@ -55,6 +56,7 @@ def connect(request):
     search_results = None
     contact_form = ContactMentorForm()  # Initialize contact_form
     search_form = MentorSearchForm()  # Initialize search_form
+    match_form = MentorshipForm()  # Initialize match_form
     message_sent = False
 
     # Handle mentor search
@@ -91,6 +93,7 @@ def connect(request):
         'search_form': search_form,
         'search_results': search_results,
         'contact_form': contact_form,
+        'match_form': match_form,
         'message_sent': message_sent
     })
 
