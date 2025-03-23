@@ -27,8 +27,8 @@ def dashboard(request):
         except Profile.DoesNotExist:
             profile = None  # Handle the case where no profile exists.
 
-        posts = ForumPost.objects.all()[:5]  # Example: Get recent posts
-        messages = []  # Add your messages model here if you have one.
+        posts = ForumPost.objects.all()[:5]  # Get the latest 5 posts
+        messages = Message.objects.filter(receiver=request.user)  
         preferred_languages = request.user.preferred_languages.all()
         context = {'profile': profile, 'user': request.user, 'posts': posts, 'messages': messages, 'preferred_languages': preferred_languages}
     else:
