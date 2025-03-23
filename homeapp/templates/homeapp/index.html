@@ -6,45 +6,78 @@
 
 {% block content %}
 <!-- index.html content starts here -->
-<div class="container windows95-style">
-    <div>
-        <h1>Welcome to Mentor Matrix</h1> <img src="{% static 'icons/codinghands.png' %}" alt="hands coding">
+<div class="form-container mx-auto p-6">
+    <div
+    class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6"
+    >
+    <div class="windows95-form index-card max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+        <div class="windows95-form-title">
+            <h2 class="windows95-form-title-text">Welcome to Mentor Matrix</h2>
+        </div>
+        <img src="{% static 'images/welcome-girl.png' %}" alt="Pixel art image of a girl entering a world of coding.">
+        <p>This retro-inspired mentorship platform is designed to connect and empower individuals of all genders who are passionate
+            about code! While championing the voices and achievements of women in tech, we welcome everyone who seeks to learn, share, and grow in a supportive community.
+           </p>
+    </div>
+
+    <div class="windows95-form index-card max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+        <div class="windows95-form-title">
+            <h2 class="windows95-form-title-text">Make mentorship connections</h2>
+        </div>
+        <img src="{% static 'images/mentoring.png' %}" alt="Pixel art image of a woman mentoring another.">
+        <p> We aim to build bridges between mentors and mentees.  Users can form relationships that transcend boundaries and celebrate diversity. </p>
+        <p>Find mentors and mentees who share your interests.</p>
+    </div>
+    
+    <div class="windows95-form index-card max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+        <div class="windows95-form-title">
+            <h2 class="windows95-form-title-text">Register & build your profile</h2>
+        </div>
+        <img src="{% static 'images/solutionsimg.png' %}" alt="Pixel art image of a woman coding.">
+        <p>Choose which coding languages you are interested in.</p>
+    </div>
+
+
+
+    <div class="windows95-form index-card max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+        <div class="windows95-form-title">
+            <h2 class="windows95-form-title-text">Connect with others</h2>
+        </div>
+        <img src="{% static 'images/connections.png' %}" alt="Pixel art image of two women collaborating on a project.">
+        <p>Mentor Matrix is a space where mentoring meets the magic of inclusivity and technology.</p>
+        <p>Find mentors and mentees who share your interests.</p>
     </div>
 
     
-    <p>Mentor Matrix is a dynamic, retro-inspired mentorship platform designed to connect and empower individuals of all genders who are passionate
-         about technology and innovation. While championing the voices and achievements of women in tech, the platform welcomes everyone who seeks to learn, share, and grow in a supportive community.
-        We aim to build bridges between mentors and mentees.  Users can form relationships that transcend boundaries and celebrate diversity. 
-        Mentor Matrix is a space where mentoring meets the magic of inclusivity and technology.
-        </p>
-    <h3 class="rainy">Get Involved</h3>
-    <p>Register & build your profile: <a href="{% url 'account_signup' %}"><img src="{% static 'icons/profile.png' %}" alt="a computer"></a> </p>
-    <p>
-        Log in & make mentorship connections: <a href="{% url 'account_login' %}"><img src="{% static 'icons/connections.png' %}" alt="connections icon"></a>
-    </p>
-    <p>Log in & join the community: <a href="{% url 'forum' %}"><img src="{% static 'icons/community.png' %}" alt="community icon"></a></p>
-    <img src="{% static 'images/mentoring.png' %}" alt="Pixel style art of a person mentoring another person.">
-    <p>Got questions?</p> <a href="{% url 'contactapp-urls:contact' %}"></a>
-    <img src="{% static 'images/question.png' %}" alt="Pixel style art of a person thinking about code.">
-    <p>We got you!</p>
-    <img src="{% static 'images/solutionsimg.png' %}" alt="Pixel style art of a woman thinking about brilliant coding solutions">
-    <p>Learn more about us: <a href="{% url 'about' %}"><img src="{% static 'icons/about.png' %}" alt="about icon"></a></p>
-    
-    <!-- Previous code, currently not needed 
-    {% if user.is_authenticated %}
-    <h1>Welcome, <span class="rainy"> {{ user.username }}!</span></h1>
-    <p>Here is some information for logged-in users.</p>
-    <p>You have <div>0</div> connections currently.</p>
-    <p><a href="#">Log out</a></p><img src="{% static 'icons/logout.png' %}" alt="logout icon">
-    {% else %}
-    <h1>Welcome to Mentor Matrix</h1>
-    <p>This is a space to find others with experience and to share your own knowledge.</p>
-    <p>Please <a href="">log in</a> to access more features.</p>
-    {% endif %}
-    -->
+    <div class="windows95-form index-card max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+        <div class="windows95-form-title">
+            <h2 class="windows95-form-title-text">Get Involved</h2>
+        </div>
+        <img src="{% static 'images/coding.png' %}" alt="Pixel art image of a woman coding.">
+        <p>New coders and old pros alike can find a place to connect, learn, and grow.</p>
+    </div>
+
+    <div class="windows95-form index-card max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+        <div class="windows95-form-title">
+            <h2 class="windows95-form-title-text">Get help from our forum</h2>
+        </div>
+        <img src="{% static 'images/question.png' %}" alt="Pixel style art of a person thinking about code.">
+        <p>Got questions?</p>
+        <p>We got you!</p>
+    </div>
+    </div>
+
 </div>
 
+<!-- 
+<p>: <a href="{% url 'account_signup' %}"><img src="{% static 'icons/profile.png' %}" alt="a computer"></a> </p>
+<p>
+    <a href="{% url 'account_login' %}"><img src="{% static 'icons/connections.png' %}" alt="connections icon"></a>
+</p>
+<p>Log in & join the community: <a href="{% url 'forum' %}"><img src="{% static 'icons/community.png' %}" alt="community icon"></a></p>
+ <a href="{% url 'contactapp-urls:contact' %}"></a>
 
+<p>Learn more about us: <a href="{% url 'about' %}"><img src="{% static 'icons/about.png' %}" alt="about icon"></a></p> -->
 
 
 <!-- index.html content ends here -->
