@@ -316,6 +316,26 @@ td, th {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
+/* Navbar styles */
+.navbar {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'MS Sans Serif', sans-serif;
+}
+
+.navbar a {
+    background-color: var(--ui-color);
+    color: var(--text-color);
+    border-color: #a0a0a0;
+    font-size: 1.5em;
+    padding: 10px 20px;
+}
+
+.navbar a:hover {
+    background-color: var(--ui-color-dark);
+    color: #ffffff;
+}
+
 /* Media Queries */
 @media (max-width: 480px) {
     .windows95-form {
@@ -326,6 +346,10 @@ td, th {
     .index-container {
         display: flex;
         flex-direction: column;
+    }
+
+    #menu {
+        background-color: var(--ui-color); /* Solid background color for small screens */
     }
 }
 
@@ -342,4 +366,4 @@ td, th {
 }
 
 
-  
+
