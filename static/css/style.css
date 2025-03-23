@@ -360,4 +360,22 @@ nav {
     background-color: #d3d3d3;
     color: #000080;
 }
+
+/* Forum Template styles */
+/* Style form fields */
+#id_title, #id_content {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f8f8f8; /* Light background */
+}
+
+#id_title:focus, #id_content:focus {
+    outline: none;
+    border-color: #007bff; /* Highlight on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
   
