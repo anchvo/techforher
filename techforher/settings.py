@@ -166,8 +166,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Django's built-
 EMAIL_HOST = 'smtp.gmail.com'  # Gmail’s SMTP server
 EMAIL_PORT = 587  # Port used for TLS
 EMAIL_USE_TLS = True  # Enable TLS (Transport Layer Security) for security
-EMAIL_HOST_USER = 'ebovjhlm@students.codeinstitute.net'  # Your Gmail address
-EMAIL_HOST_PASSWORD = 'elvb uwhb gwuj utjt'  # Your Gmail password (use App Password if 2FA is enabled)
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")  # Getting mail from env.py
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")  # Getting password from env.py
 
 # Crispy Forms with Tailwind CSS 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
