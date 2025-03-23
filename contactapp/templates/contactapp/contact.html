@@ -1,10 +1,27 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
-<div class="container">
-    <h2>Contact Us</h2>
+<div class="form-container">
+<div class="windows95-form">
+    <div class="windows95-form-title">
+    <h2 class="windows95-form-title-text">Contact Us</h2>
+</div>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="windows95-submit-button">Submit</button>
+</form>
+</div>
 </div>
 
 <!-- index.html content ends here -->
 {% endblock %}
+
+<!-- Code Dump 
+{{ form.as_p }}
+{{ form|crispy }}
+  # Submit button styled using a widget
+    submit = forms.CharField(widget=forms.TextInput(attrs={'type': 'submit', 'value': 'Submit', 'class': 'submit-button'}))
+-->

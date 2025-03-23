@@ -1,9 +1,5 @@
 {% load static %}
 
-{% url 'account_login' as login_url %}
-{% url 'account_signup' as signup_url %}
-{% url 'account_logout' as logout_url %}
-
 <!DOCTYPE html>
 <html class="h-100" lang="en">
 
@@ -65,7 +61,7 @@
         TechForHer </p>
 
     <p class="ml-4 mr-4 text-base sm:text-lg font-mono bg-gray-200 px-4 py-2 rounded-b-lg">
-        <a href="#" class="text-black font-bold hover:text-teal-700 text-lg font-mono">Contact Us</a>
+        <a href="{% url 'contactapp-urls:contact' %}" class="text-black font-bold hover:text-teal-700 text-lg font-mono">Contact Us</a>
     </p>
 
 
