@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.views import generic
 
-from .models import ForumPost, Mentorship, Profile, CustomUser, Message
+from .models import ForumPost, Mentorship, Profile, CustomUser, Message, Reply
 from .forms import ForumPostForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
@@ -12,7 +12,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from .models import ForumPost, Mentorship, CustomUser
 from .forms import ForumPostForm, MentorSearchForm, ContactMentorForm, MentorshipForm, UserForm
 from django.contrib.auth import get_user_model
-from .forms import ProfileForm, UserForm
+from .forms import ProfileForm, UserForm, ReplyForm
 
 User = get_user_model()
 
@@ -122,7 +122,18 @@ def match_mentor(request):
 @login_required
 def post_detail(request, post_id):
     post = get_object_or_404(ForumPost, id=post_id)
-    return render(request, 'homeapp/post_detail.html', {'post': post})
+    replies = post.replies.all()
+    if request.method == 'POST':
+        form = ReplyForm(request.POST)
+        if form.is_valid():
+            reply = form.save(commit=False)
+            reply.post = post
+            reply.user = request.user
+            reply.save()
+            return redirect('post_detail', post_id=post.id)
+    else:
+        form = ReplyForm()
+    return render(request, 'homeapp/post_detail.html', {'post': post, 'replies': replies, 'form': form})
 
 
 @login_required
