@@ -76,7 +76,7 @@ class MentorshipForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['profile_picture', 'bio']
+        fields = ['bio']
 
 class UserForm(forms.ModelForm):
     preferred_languages = forms.ModelMultipleChoiceField(
@@ -86,4 +86,4 @@ class UserForm(forms.ModelForm):
     )
     class Meta:
         model = CustomUser
-        fields = ['preferred_languages']        
+        fields = ['preferred_languages']    
