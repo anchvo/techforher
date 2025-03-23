@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-    <h2>Mentorship Connections</h2>
-
+<div class="windows95-container w-[80%] mx-auto mt-10 p-4 border-2 border-gray-400 bg-gray-300 shadow-md rounded-md">
+    <div class="windows95-form-title">
+    <h2 class="windows95-form-title-text">Mentorship Connections</h2>
+    </div>
     <!-- Success Message -->
     {% if message_sent %}
-        <div class="alert alert-success">
+        <div class="alert alert-success mb-4 p-4 border-2 border-solid border-gray-600 bg-gray-200 text-green-900 shadow-sm">
             Your message has been sent successfully!
         </div>
     {% endif %}
