@@ -27,10 +27,10 @@
         </button>
       </form>
       <!-- Display Search Results -->
-    {% if search_results %}
     <div class="windows95-form-title mentor-result-form">
         <h2 class="windows95-form-title-text">Search Results</h2>
     </div> 
+    {% if search_results %}
     {% for mentor in search_results %}
     <table class="w-full">
         <tr>
@@ -78,60 +78,21 @@
         <h2 class="windows95-form-title-text">Existing Mentorships:</h2>
     </div> 
         {% for mentorship in mentorships %}
-        <li>
-          {{ mentorship.mentor }} matched with {{ mentorship.mentee }} ({{
-          mentorship.preferred_language }})
-        </li>
-        {% empty %}
-        <li>No mentorships found.</li>
+        <table>
+          <tr>
+            <td>{{ mentorship.mentor }} matched with {{ mentorship.mentee }}</td>
+          </tr>
+          <tr>
+            <td>Preferred Languages: </td>
+            <td>{{mentorship.preferred_language }}</td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td>No mentorships found.</td>
+          </tr>
+        </table>
         {% endfor %}
-      </ul>
     </div>
   </div>
 </div>
 {% endblock %}
-
-
-<!-- Old Code
-
-  <div class="lg:flex lg:justify-between lg:space-x-6">
-
-
-        <div class="mb-6 lg:mb-0 w-full lg:w-[48%]">
-  <div class="lg:flex lg:justify-between lg:space-x-6">
-
-
-    <div class="mb-6 lg:mb-0 w-full lg:w-[48%]">
-
-      <h3>Search for a Mentor</h3>
-      <form method="POST">
-        {% csrf_token %} {{ search_form.as_p }}
-        <button type="submit" name="search_mentor" class="btn btn-primary">
-          Search
-        </button>
-      </form>
-
-      
-      <ul>
-        {% for mentor in search_results %}
-        <li>
-          {{ mentor.username }} - {{ mentor.role }}
-          <form method="POST" style="display: inline">
-            {% csrf_token %}
-            <input type="hidden" name="mentor_id" value="{{ mentor.id }}" />
-            {{ contact_form.as_p }}
-            <button
-              type="submit"
-              name="contact_mentor"
-              class="btn btn-secondary"
-            >
-              Contact
-            </button>
-          </form>
-        </li>
-        {% empty %}
-        <li>No mentors found for the selected language.</li>
-        {% endfor %}
-      </ul>
-    </div>
--->
