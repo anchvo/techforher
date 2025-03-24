@@ -7,11 +7,3 @@ menuToggle.addEventListener('click', function() {
     menu.classList.toggle('show'); // Toggle 'show' class to show/hide the menu
 });
 
-/* Old JS Code
-const menuToggle = document.getElementById("menu-toggle");
-const menu = document.getElementById("menu");
-
-menuToggle.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-});
-*/

@@ -231,7 +231,7 @@ Key Entities & Relationships
 - Admin Images: Retro themed avatars of each admin were custom created to allow more connection between users and admins.
 
 ## Testing and Validation
-The program has been tested and its code validated, the results can be viewed here 
+The program has been tested and its code validated, the results can be viewed here [Testing and Validation](https://github.com/anchvo/techforher/blob/main/testing.md)
 
 ## Bugs
 ### Solved
