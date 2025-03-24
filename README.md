@@ -18,7 +18,6 @@ Responsive Design: A user-friendly interface optimized for both desktop and mobi
 - [UX](#ux)
     - [Project Goals](#project-goals)
     - [User Demographic](#user-demographic)
-    - [User Experience](#user-experience)
     - [User Goals](#user-goals)
 - [Development](#development)
     - [Collaboration](#collaboration)
@@ -100,8 +99,6 @@ Mentor Matrix is a space where mentoring meets the magic of inclusivity and tech
     - Career Changers: Individuals transitioning into tech from other fields.
     - Tech Enthusiasts & Community Builders: Anyone looking for peer support and networking opportunities.
 
-### User Experience
-
 ### User Goals
 1. Find & Connect with Mentors
     - Users, especially women in tech, can find experienced mentors who can guide them in their careers.
@@ -157,6 +154,13 @@ The Power of Collaboration
 Mentor Matrix is more than just a project—it’s a testament to what teamwork, shared vision, and effective collaboration can achieve in a short time. Every contribution helped shape it into a meaningful platform for mentorship in tech! 
 
 ### Wireframes
+Wireframes were created and updated during the development process to be able to better plan the layout and functionality of the app.
+![Wireframe Home](docs/wireframe_home.png)
+![Wireframe About Us](docs/wireframe_aboutus.png)
+![Wireframe Dashboard](docs/wireframe_dashboard.png)
+![Wireframe Community](docs/wireframe_community.png)
+![Wireframe Connections](docs/wireframe_connections.png)
+![Wireframe Logout](docs/wireframe_logout.png)
 
 ## Database
 The connected Postgres Database was set up via the Code Institute Database Client.
