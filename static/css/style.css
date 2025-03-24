@@ -157,7 +157,7 @@ footer {
     /* Make each menu item take full width on small screens */
     .menu-item {
         text-align: center;
-        width: 70%;
+        width: 95%;
         padding: 1px;
     }
 }
