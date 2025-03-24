@@ -1,41 +1,62 @@
-{% extends "base.html" %}
-
-{% block content %}
-<div class="windows95-container w-[80%] mx-auto mt-10 p-4 border-2 border-gray-400 bg-gray-300 shadow-md rounded-md">
-    <div class="windows95-form-title">
-        <h2 class="windows95-form-title-text">{{ post.title }}</h2>
-    </div>
-    <div>
-        <table>
-            <tr>
-                <td class="text-left font-semibold">Posted by: {{ post.user }}</td>
-            </tr>
-            <tr>
-                <td>{{ post.content }}</td>
-            </tr>
-        </table>
-    </div>
-    <div>
+{% extends "base.html" %} {% block content %}
+<div
+  class="windows95-container w-[80%] mx-auto mt-10 p-4 border-2 border-gray-400 bg-gray-300 shadow-md rounded-md"
+>
+  <div class="windows95-form-title">
+    <h2 class="windows95-form-title-text">{{ post.title }}</h2>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <td class="text-left font-semibold">Posted by : <span style="color: #000080; font-weight: bold;">{{ post.user }}</span></td>
+      </tr>
+      <tr>
+        <td>{{ post.content }}</td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-6"
+    >
+      <div
+        class="windows95-box max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto"
+      >
         <div class="windows95-form-title">
-            <h2 class="windows95-form-title-text">Replies</h2>
+          <h2 class="windows95-form-title-text">Replies</h2>
         </div>
-        <form method="POST" class="mt-3">
-            {% csrf_token %}
-            <div>
-                <label for="id_content" class="form-label" style="font-weight: bold; color: #333;">Content</label>
-                {{ form.content }}
-            </div>
-            <button type="submit" class="windows95-submit-button">Submit Post</button>
-        </form>
-        <div class="pt-4"></div>
-        <ul>
+        <div class="pt-4">
+          <ul>
             {% for reply in post.replies.all %}
-            <li>{{ reply.content }} - {{ reply.user }}</li>
+            <li>{{ reply.content }} - <span style="color: #000080; font-weight: bold;">{{ reply.user }}</span></li>
             {% empty %}
             <li>There are no replies yet.</li>
             {% endfor %}
-        </ul>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="windows95-box max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto"
+      >
+        <div class="windows95-form-title">
+          <h2 class="windows95-form-title-text">Reply to Post</h2>
+        </div>
+        <form method="POST" class="mt-3">
+          {% csrf_token %}
+          <div>
+            <label
+              for="id_content"
+              class="form-label"
+              >Content</label
+            >
+            {{ form.content }}
+          </div>
+          <button type="submit" class="windows95-submit-button">
+            Submit Post
+          </button>
+        </form>
+      </div>
     </div>
+    {% endblock %}
+  </div>
 </div>
-</div>
-{% endblock %}

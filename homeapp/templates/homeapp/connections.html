@@ -33,11 +33,13 @@
           Search
         </button>
       </form>
+
       <!-- Display Search Results -->
+      {% if search_results %}
       <div class="windows95-form-title mentor-result-form">
         <h2 class="windows95-form-title-text">Search Results</h2>
       </div>
-      {% if search_results %} {% for mentor in search_results %}
+      {% for mentor in search_results %}
       <table class="w-full">
         <tr>
           <td class="text-left font-semibold">Mentor:</td>
@@ -51,21 +53,23 @@
               <button
                 type="submit"
                 name="contact_mentor"
-                class="windows95-submit-button">
+                class="windows95-submit-button"
+              >
                 Send Message
               </button>
             </form>
           </td>
         </tr>
-        {% empty %}
+      </table>
+      {% empty %}
+      <table class="w-full">
         <tr>
           <td class="text-left font-semibold">
             No mentors found for the selected language.
           </td>
         </tr>
-        {% endfor %}
       </table>
-      {% endif %}
+      {% endfor %} {% endif %}
     </div>
 
     <!-- Right Section: Existing Mentorships -->
@@ -94,20 +98,26 @@
     </div>
 
     <!-- Match Mentor to Mentee (Admin Only) -->
+    {% if request.user.is_staff %}
     <div
-      class="windows95-form max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+      class="windows95-form max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto"
+    >
       <div class="windows95-form-title">
         <h2 class="windows95-form-title-text">Create a Mentorship Match</h2>
       </div>
-        {% if request.user.is_staff %}
-        <h3>Match Mentor to Mentee</h3>
-        <form method="POST">
-          {% csrf_token %} {{ match_form.as_p }}
-          <button type="submit" name="match_mentor" class="windows95-submit-button">
-            Match
-          </button>
-        </form>
-        {% endif %}
+      <h3>Match Mentor to Mentee</h3>
+      <form method="POST">
+        {% csrf_token %} {{ match_form.as_p }}
+        <button
+          type="submit"
+          name="match_mentor"
+          class="windows95-submit-button"
+        >
+          Match
+        </button>
+      </form>
+      {% endif %}
+    </div>
   </div>
+  {% endblock %}
 </div>
-{% endblock %}
