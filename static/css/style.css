@@ -131,7 +131,9 @@ footer {
 @media (max-width: 1024px) {
     /* Show the burger icon only on medium and small screens */
     .burger-icon {
-        display: block; /* Show burger icon on medium and small screens */
+        display: block;
+
+         /* Show burger icon on medium and small screens */
         
     }
 
@@ -140,9 +142,10 @@ footer {
         display: none; /* Hide menu by default on medium/small screens */
         flex-direction: column;
         width: 100%;
-        background-color: var(--background-color);
+        position: absolute;
+        width: 100%;
         padding: 10px;
-        gap: 10px;
+        gap: 0;
         border-radius: 5px;
     }
 
@@ -154,8 +157,8 @@ footer {
     /* Make each menu item take full width on small screens */
     .menu-item {
         text-align: center;
-        width: 60%;
-        padding: 15px;
+        width: 70%;
+        padding: 1px;
     }
 }
 
