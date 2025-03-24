@@ -38,31 +38,31 @@
         
             <!-- Menu links (hidden on small screens, shown when menu is toggled) -->
             <div id="menu" class="menu hidden lg:flex items-center gap-2 absolute top-full w-auto lg:static bottom-0 right-0 pr-4 lg:bg-transparent w-full lg:w-auto flex flex-col lg:flex-row ml-auto">
-              <a href="{% url 'home' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border">
+              <a href="{% url 'home' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-md border">
                 home
               </a>
               {% if user.is_authenticated %}
-              <a href="{% url 'dashboard' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">
+              <a href="{% url 'dashboard' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-md border border-black">
                 dashboard
               </a>
-              <a href="{% url 'forum' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">
+              <a href="{% url 'forum' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-md border border-black">
                 community
               </a>
-              <a href="{% url 'connections' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">
+              <a href="{% url 'connections' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-md border border-black">
                 connections
               </a>
-              <a href="{% url 'account_logout' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">
+              <a href="{% url 'account_logout' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-md border border-black">
                 log out
               </a>
               {% else %}
-              <a href="{% url 'account_signup' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">
+              <a href="{% url 'account_signup' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-md border border-black">
                 register
               </a>
-              <a href="{% url 'account_login' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">
+              <a href="{% url 'account_login' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-md border border-black">
                 log in
               </a>
               {% endif %}
-              <a href="{% url 'about' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-t-md border border-black">
+              <a href="{% url 'about' %}" class="menu-item px-4 py-2 text-lg hover:bg-white hover:text-black rounded-md border border-black">
                 about us
               </a>
             </div>
@@ -114,12 +114,12 @@
 
 <!-- Footer -->
 <footer class="w-full bg-teal-700 shadow-md p-4 flex items-center justify-between bottom-0 left-0">
-    <p class="ml-4 text-base sm:text-lg font-mono font-bold text-black bg-gray-200 px-4 py-2 rounded-b-lg">Mentor
+    <p class="ml-4 text-base sm:text-lg font-mono font-bold text-black bg-gray-200 px-4 py-2 rounded-lg">Mentor
         Matrix</p>
-    <p class="ml-4 text-base sm:text-lg font-mono font-bold text-black bg-gray-200 px-4 py-2 rounded-b-lg">© Team
+    <p class="ml-4 text-base sm:text-lg font-mono font-bold text-black bg-gray-200 px-4 py-2 rounded-lg">© Team
         TechForHer </p>
 
-    <p class="ml-4 mr-4 text-base sm:text-lg font-mono bg-gray-200 px-4 py-2 rounded-b-lg">
+    <p class="ml-4 mr-4 text-base sm:text-lg font-mono bg-gray-200 px-4 py-2 rounded-lg">
         <a href="{% url 'contactapp-urls:contact' %}" class="text-black font-bold hover:text-teal-700 text-lg font-mono">Contact Us</a>
     </p>
 </footer>
