@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container text-center mt-5">
-    <h1>500: Internal Server Error</h1>
-    <p>Oops! Our servers are having an imposter syndrome moment. Even the best engineers run into bugs! While we refactor, take a deep breath—you're doing great! 💡</p>
-    <a href="{% url 'home' %}" class="btn btn-primary">Try Again</a>
-    
-    <p class="mt-4">💡 Mentorship Tip: Mistakes are proof you're learning. Keep going!</p>
+<div class="form-container mx-auto p-6">
+    <div class="windows95-form index-card max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+        <div class="windows95-form-title">
+            <h1 class="windows95-form-title-text">500: Internal Server Error</h1>
+        </div>
+        <p>Oops! Our servers are having an imposter syndrome moment. Even the best engineers run into bugs! While we
+            refactor, take a deep breath—you're doing great! 💡</p>
+        <a href="{% url 'home' %}" class="windows95-submit-button">Try Again</a>
+        <p class="mt-4">💡 Mentorship Tip: Mistakes are proof you're learning. Keep going!</p>
+    </div>
 </div>
 {% endblock %}
