@@ -26,15 +26,21 @@
   font-weight: normal;
 }
 
+header {
+    width: 100%;
+    padding: 0;
+    position: fixed;
+    top: 0;
+}
+
 .header {
     font-family: rainyhearts, sans-serif;
     background-color: var(--ui-color);
     box-shadow: 10px 10px 0 0 var(--ui-color-dark);
-    
     text-align: left;
     max-width: fit-content;
-    margin: 15px;
-    padding: 20px 30px;
+    margin-top: 0px;
+    margin: 5px;
 }
 
 .header h1 {
@@ -53,6 +59,7 @@ body {
 }
 
 main {
+    margin-top: 90px;
     margin-bottom: 30px;
 }
 
@@ -64,6 +71,13 @@ nav {
 footer {
     background-color: var(--background-color);
     box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    background-color: var(--ui-color);
+    font-family: w95fa, sans-serif;
+    text-align: center;
+    box-shadow: 3px 3px 0 0 var(--ui-color-dark)
 }
 
 .container {
@@ -102,6 +116,10 @@ footer {
     border: none;
     color: var(--text-color); /* Use the theme text color */
     margin-left: auto;
+}
+
+#menu-toggle {
+    padding-right: 15px;
 }
 
 /* Dropdown Menu */
